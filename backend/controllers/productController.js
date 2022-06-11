@@ -21,6 +21,7 @@ exports.getAllProducts = catchAsyncError(async(req, res) => {
 
 // CREATE A PRODUCT
 exports.createProduct = catchAsyncError(async(req, res) => {
+    req.body.user = req.user.id;
     const product = await productModel.create(req.body);
     res.status(201).json({
         success: true,
