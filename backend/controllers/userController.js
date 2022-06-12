@@ -2,7 +2,7 @@ const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError = require('../middlewares/catchAsyncError');
 const userModel = require('../models/userModel');
 const sendToken = require('../utils/jwtToken');
-
+const sendEmail = require(`../utils/sendEmail`);
 
 // REGISTER A USER FUNCTION
 exports.registerUser = catchAsyncError(async(req, res, next) => {
@@ -49,6 +49,7 @@ exports.loginUser = catchAsyncError(async(req, res, next) => {
 
 });
 
+// LOGOUT USER
 exports.logoutUser = catchAsyncError(async(req, res, next) => {
     
     res.cookie("token", null, {
@@ -60,4 +61,45 @@ exports.logoutUser = catchAsyncError(async(req, res, next) => {
         success: true,
         message: "Logged Out Successfully."
     });
+});
+
+// FORGOT PASSWORD FOR USER
+exports.forgotPassword = catchAsyncError(async(req, res, next) => {
+    const user = await userModel.findOne( {email: req.body.email} );
+    if(!user) {
+        return next(new ErrorHandler("User not Found", 404));
+    }
+
+    const passwordResetToken = user.getPasswordResetToken();
+
+    // TOKEN HAS BEEN CREATED BUT NOT SAVED, SO WE SAVE THE DOCUMENT.
+    await user.save({ validateBeforeSave: false });
+
+    // CREATING PASSWORD RESET URL (http/https -> req.protocol, localhost, or production host -> req.get("host"))
+    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/api/password/reset/${passwordResetToken}`;
+
+    // MESSAGE FOR EMAIL
+    const message = `Your Password Reset Token is :- \n\n ${resetPasswordUrl} \n\n if you have not reqested for this email, then please ignore.`
+
+    try {
+        await sendEmail({
+            email: user.email,
+            subject: `DevCart Password Recovery`,
+            message: message
+        });
+
+        res.status(200).json({
+            success: true,
+            message: `Email Sent to ${user.email} successfully!`
+        })
+    } catch (error) {
+        // SINCE WE HAVE SAVED THE TOKEN, AND THE EXPIRE, WE NEED TO MAKE THEM UNDEFINED.
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+
+        // TOKEN HAS BEEN MADE UNDEFINED BUT NOT SAVED, SO WE SAVE THE DOCUMENT.
+        await user.save({ validateBeforeSave: false });
+
+        return next(new ErrorHandler(`Error: ${error.message}`, 500));
+    }
 });
