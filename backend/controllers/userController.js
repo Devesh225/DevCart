@@ -3,6 +3,7 @@ const catchAsyncError = require('../middlewares/catchAsyncError');
 const userModel = require('../models/userModel');
 const sendToken = require('../utils/jwtToken');
 const sendEmail = require(`../utils/sendEmail`);
+const crypto = require('crypto');
 
 // REGISTER A USER FUNCTION
 exports.registerUser = catchAsyncError(async(req, res, next) => {
@@ -102,4 +103,26 @@ exports.forgotPassword = catchAsyncError(async(req, res, next) => {
 
         return next(new ErrorHandler(`Error: ${error.message}`, 500));
     }
+});
+
+// RESET PASSWORD
+exports.resetPassword = catchAsyncError(async(req, res, next) => {
+    const resetPasswordToken = crypto.createHash("sha256").update(req.params.token).digest("hex"); 
+    const user = await userModel.findOne({resetPasswordToken, resetPasswordExpire: { $gt: Date.now() }});
+    
+    if(!user) {
+        return next(new ErrorHandler("Reset Password Token is Invalid, or has been Expired", 400));
+    }
+
+    if(req.body.password !== req.body.confirmPassword) {
+        return next(new ErrorHandler("Passwords do not match", 400));
+    }
+
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+
+    await user.save();
+
+    sendToken(user, 200, res);
 });
