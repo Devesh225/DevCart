@@ -179,3 +179,24 @@ exports.updateUserProfile = catchAsyncError(async(req, res, next) => {
     });
 
 });
+
+// GET ALL USERS
+exports.getAllUsers = catchAsyncError(async(req, res, next) => {
+    const users = await userModel.find();
+    res.status(200).json({
+        success: true,
+        users
+    });
+});
+
+// GET USER DETAILS FOR ADMIN
+exports.getSingleUserDetails = catchAsyncError(async(req, res, next) => {
+    const user = await userModel.findById(req.params.id);
+    if(!user) {
+        return next(new ErrorHandler(`User with ID: ${req.params.id} does not Exist.`, 400));
+    }
+    res.status(200).json({
+        success: true,
+        user
+    });
+});
