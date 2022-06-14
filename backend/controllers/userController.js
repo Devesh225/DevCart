@@ -200,3 +200,38 @@ exports.getSingleUserDetails = catchAsyncError(async(req, res, next) => {
         user
     });
 });
+
+// UPDATE USER ROLE 
+exports.updateUserRole = catchAsyncError(async(req, res, next) => {
+    
+    const newUserData = {
+        role: req.body.role
+    };
+
+    const user = await userModel.findByIdAndUpdate(req.params.id, newUserData, {new: true, runValidators: true});
+
+    res.status(200).json({
+        success: true,
+        user
+    });
+
+});
+
+// DELETE USER
+exports.deleteUser = catchAsyncError(async(req, res, next) => {
+
+    // WE WILL REMOVE CLOUDINARY LATER.
+    const user = await userModel.findById(req.params.id);
+
+    if(!user) {
+        return next(new ErrorHandler(`User with ID: ${req.params.id} does not Exist.`, 400));
+    }
+
+    await user.remove();
+
+    res.status(200).json({
+        success: true,
+        message: "User Deleted Successfully."
+    });
+
+});
