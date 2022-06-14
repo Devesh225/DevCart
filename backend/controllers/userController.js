@@ -139,3 +139,25 @@ exports.getUserDetails = catchAsyncError(async(req, res, next) => {
         user
     });
 });
+
+// UPDATE USER PASSWORD 
+exports.updateUserPassword = catchAsyncError(async(req, res, next) => {
+    const user = await userModel.findById(req.user.id).select("+password");
+    // MATCHING PASSWORD
+    const isPasswordMatched = await user.comparePassword(req.body.oldPassword);
+
+    if(!isPasswordMatched) {
+        return next(new ErrorHandler("Current Password is Incorrect.", 401));
+    }
+
+    if(req.body.newPassword !== req.body.confirmPassword) {
+        return next(new ErrorHandler("Passwords do not match.", 401));
+    }
+
+    user.password = req.body.newPassword;
+    await user.save();
+
+    // LOGGING IN
+    sendToken(user, 200, res);
+
+});
