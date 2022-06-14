@@ -17,6 +17,12 @@ const checkError = (err, req, res, next) => {
         err = new ErrorHandler(message, 500);
     }
 
+    // Duplicate JWT Error
+    if(err.name === 'JsonWebTokenError') {
+        const message = `Token is Invalid, Try Again Later.`;
+        err = new ErrorHandler(message, 500);
+    }
+
     res.status(err.statusCode).json({
         success: false,
         message: err.message
