@@ -201,7 +201,7 @@ exports.getSingleUserDetails = catchAsyncError(async(req, res, next) => {
     });
 });
 
-// UPDATE USER ROLE 
+// UPDATE USER DETAILS 
 exports.updateUserAdmin = catchAsyncError(async(req, res, next) => {
     
     const newUserData = {
