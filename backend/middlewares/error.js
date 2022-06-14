@@ -17,9 +17,15 @@ const checkError = (err, req, res, next) => {
         err = new ErrorHandler(message, 500);
     }
 
-    // Duplicate JWT Error
+    // Wrong JWT Error
     if(err.name === 'JsonWebTokenError') {
         const message = `Token is Invalid, Try Again Later.`;
+        err = new ErrorHandler(message, 500);
+    }
+
+    // JWT Expire Error
+    if(err.name === 'TokenExpiredError') {
+        const message = `Token is Expired, Try Again Later.`;
         err = new ErrorHandler(message, 500);
     }
 
