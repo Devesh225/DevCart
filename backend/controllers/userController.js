@@ -161,3 +161,21 @@ exports.updateUserPassword = catchAsyncError(async(req, res, next) => {
     sendToken(user, 200, res);
 
 });
+
+// UPDATE USER DETAILS 
+exports.updateUserProfile = catchAsyncError(async(req, res, next) => {
+    
+    const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        // WE WILL ALSO ADD AN AVATAR, AFTER INTEGRATING CLOUDINARY
+    };
+
+    const user = await userModel.findByIdAndUpdate(req.user.id, newUserData, {new: true, runValidators: true});
+
+    res.status(200).json({
+        success: true,
+        user
+    });
+
+});
