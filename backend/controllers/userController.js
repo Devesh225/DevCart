@@ -126,3 +126,16 @@ exports.resetPassword = catchAsyncError(async(req, res, next) => {
 
     sendToken(user, 200, res);
 });
+
+// GET USER DETAILS 
+exports.getUserDetails = catchAsyncError(async(req, res, next) => {
+    // THIS CAN ONLY BE ACCESSED BY SOMEONE WHO HAS ALREADY LOGGED IN, SO WE TAKE THE USER ID FROM THE REQ, AND WE FIND THE USER.
+    // IT IS IMPOSSIBLE THAT USER CANNOT BE FOUND BECAUSE THAT IS THE USER WHICH IS LOGGED IN.
+    // THE USER IS STORED IN req.user AFTER LOGGING IN.
+    const user = await userModel.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        user
+    });
+});
