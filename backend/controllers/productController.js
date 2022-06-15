@@ -70,3 +70,48 @@ exports.getProduct = catchAsyncError(async(req, res) => {
 
 });
 
+// CREATE/UPDATE A REVIEW
+exports.createUpdateProductReview = catchAsyncError(async(req, res, next) => {
+   
+    const { rating, comment, productId } = req.body;
+
+    const review = {
+        user: req.user.id,
+        name: req.user.name,
+        rating: Number(rating),
+        comment: comment,
+    }
+
+    const product = await productModel.findById(productId);
+    
+    // IF THE ID INSIDE THE USER IS THE SAME AS THE CURRENT ID LOGGED IN, THEN REVIEW IS ALREADY DONE
+    const isReviewed = product.reviews.find(review => review.user.toString() === req.user.id);
+
+    if(isReviewed) {
+        product.reviews.forEach((review) => {
+            if(review.user.toString() === req.user.id) {
+                review.rating = rating,
+                review.comment = comment
+            }
+        })
+    } else {
+        product.reviews.push(review);
+        product.numberOfReviews = product.reviews.length
+    }
+
+    let sumRating = 0;
+    product.reviews.forEach((review) => {
+        sumRating += review.rating
+    });
+
+    product.rating = sumRating/product.reviews.length;
+
+    await product.save({validateBeforeSave: false});
+
+    res.status(200).json({
+        success: true,
+        product
+    });
+
+});
+
