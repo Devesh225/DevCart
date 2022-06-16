@@ -115,3 +115,30 @@ exports.createUpdateProductReview = catchAsyncError(async(req, res, next) => {
 
 });
 
+// GET ALL REVIEWS OF A SINGLE PRODUCT
+exports.getAllReviewsProduct = catchAsyncError(async(req, res, next) => {
+    const product = await productModel.findById(req.query.id);
+    if(!product) {
+        return next(new ErrorHandler('Product Not Found', 400));
+    }
+
+    res.status(200).json({
+        success: true,
+        reviews: product.reviews
+    });
+});
+
+// DELETE A REVIEW
+exports.deleteReview = catchAsyncError(async(req, res, next) => {
+    const product = await productModel.findById(req.query.id);
+    if(!product) {
+        return next(new ErrorHandler('Product Not Found', 400));
+    }
+
+    const review = 
+
+    res.status(200).json({
+        success: true,
+        message: 'Review Deleted Successfully'
+    });
+});
