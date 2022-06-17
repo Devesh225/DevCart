@@ -24,3 +24,29 @@ exports.newOrder = catchAsyncError(async(req, res, next) => {
         order
     });
 });
+
+
+// GET A SINGLE ORDER
+exports.getOrderDetails = catchAsyncError(async(req, res, next) => {
+    // POPULATE WILL GO TO USER DATABASE AND BY CHECKING THE ID, IT WILL FETCH THE NAME AND EMAIL OF THE USER.
+    const order = await orderModel.findById(req.params.id).populate("user", "name email");
+    if(!order) {
+        return next(new ErrorHandler("Order Not Found", 404));
+    }
+
+    res.status(200).json({
+        success: true,
+        order
+    });
+});
+
+// GET LOGGED IN USER ORDERS
+exports.myOrders = catchAsyncError(async(req, res, next) => {
+    // POPULATE WILL GO TO USER DATABASE AND BY CHECKING THE ID, IT WILL FETCH THE NAME AND EMAIL OF THE USER.
+    const orders = await orderModel.find({ user: req.user._id });
+
+    res.status(200).json({
+        success: true,
+        orders
+    });
+});
