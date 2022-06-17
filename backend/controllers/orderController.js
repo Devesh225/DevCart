@@ -41,7 +41,7 @@ exports.getOrderDetails = catchAsyncError(async(req, res, next) => {
 });
 
 // GET LOGGED IN USER ORDERS
-exports.myOrders = catchAsyncError(async(req, res, next) => {
+exports.getMyOrders = catchAsyncError(async(req, res, next) => {
     // POPULATE WILL GO TO USER DATABASE AND BY CHECKING THE ID, IT WILL FETCH THE NAME AND EMAIL OF THE USER.
     const orders = await orderModel.find({ user: req.user._id });
 
