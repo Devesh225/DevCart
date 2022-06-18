@@ -2,6 +2,7 @@ const orderModel = require('../models/orderModel');
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError = require('../middlewares/catchAsyncError');
 const ApiFeatures = require('../utils/apiFeatures');
+const productModel = require('../models/productModel');
 
 // CREATE NEW ORDER
 exports.newOrder = catchAsyncError(async(req, res, next) => {
@@ -50,3 +51,23 @@ exports.getMyOrders = catchAsyncError(async(req, res, next) => {
         orders
     });
 });
+
+
+// GET ALL ORDERS ADMIN 
+exports.getAllOrders = catchAsyncError(async(req, res, next) => {
+    
+    const orders = await orderModel.find();
+
+    let totalAmount = 0;
+
+    orders.forEach((order) => {
+        totalAmount = totalAmount + order.totalPrice;
+    })
+
+    res.status(200).json({
+        success: true,
+        orders,
+        totalAmount
+    });
+});
+
