@@ -8,6 +8,6 @@ router.route("/order/:id").get(isAuthenticatedUser, getOrderDetails);
 router.route("/orders/me").get(isAuthenticatedUser, getMyOrders);
 router.route("/admin/orders").get(isAuthenticatedUser, authorizedRoles("admin"), getAllOrders);
 router.route("/admin/order/:id").put(isAuthenticatedUser, authorizedRoles("admin"), updateOrderStatus);
-router.route("/admin/order/:id").put(isAuthenticatedUser, authorizedRoles("admin"), deleteOrder);
+router.route("/admin/order/:id").delete(isAuthenticatedUser, authorizedRoles("admin"), deleteOrder);
 
 module.exports = router;

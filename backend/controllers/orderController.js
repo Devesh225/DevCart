@@ -74,7 +74,7 @@ exports.getAllOrders = catchAsyncError(async(req, res, next) => {
 // UPDATE ORDER STATUS ADMIN 
 exports.updateOrderStatus = catchAsyncError(async(req, res, next) => {
     
-    const order = await orderModel.find(req.params.id);
+    const order = await orderModel.findById(req.params.id);
 
     if(order.orderStatus === 'Delivered') {
         return next(new ErrorHandler("This order is already delivered", 400));
@@ -97,7 +97,7 @@ exports.updateOrderStatus = catchAsyncError(async(req, res, next) => {
 
     res.status(200).json({
         success: true,
-        orders,
+        order,
         totalAmount
     });
 });
@@ -112,8 +112,8 @@ async function updateStock(productId, quantity) {
 
 // DELETE ORDER 
 exports.deleteOrder = catchAsyncError(async(req, res, next) => {
-    
-    const order = await orderModel.find(req.params.id);
+
+    const order = await orderModel.findById(req.params.id);
 
     if(!order) {
         return next(new ErrorHandler("Order Not Found", 404));
