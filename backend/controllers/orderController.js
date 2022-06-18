@@ -71,3 +71,41 @@ exports.getAllOrders = catchAsyncError(async(req, res, next) => {
     });
 });
 
+// UPDATE ORDER STATUS ADMIN 
+exports.updateOrderStatus = catchAsyncError(async(req, res, next) => {
+    
+    const order = await orderModel.find(req.params.id);
+
+    if(order.orderStatus === 'Delivered') {
+        return next(new ErrorHandler("This order is already delivered", 400));
+    }
+
+    // WE NEED TO SUBTRACT THE QUANTITY FROM THE STOCK WHEN THE ITEM GETS DELIVERED.
+    order.orderItems.forEach(async(order) => {
+        await updateStock(order.product, order.quantity);
+    });
+
+    order.orderStatus = req.body.status;
+    
+    if(req.body.status === 'Delivered') {
+        order.deliveredAt = Date.now()
+    }
+
+    await order.save({
+        validateBeforeSave: false
+    });
+
+    res.status(200).json({
+        success: true,
+        orders,
+        totalAmount
+    });
+});
+
+async function updateStock(productId, quantity) {
+    const product = await productModel.findById(productId);
+    product.stock = product.stock - quantity;
+    await product.save({
+        validateBeforeSave: false
+    });
+}
