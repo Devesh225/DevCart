@@ -109,3 +109,22 @@ async function updateStock(productId, quantity) {
         validateBeforeSave: false
     });
 }
+
+// DELETE ORDER 
+exports.getAllOrders = catchAsyncError(async(req, res, next) => {
+    
+    const order = await orderModel.find(req.params.id);
+
+    if(!order) {
+        return next(new ErrorHandler("Order Not Found", 404));
+    }
+
+    await order.remove()
+
+    res.status(200).json({
+        success: true,
+        message: "Order Deleted Successfully"
+    });
+});
+
+
