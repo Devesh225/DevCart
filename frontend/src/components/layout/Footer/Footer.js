@@ -1,6 +1,7 @@
 import React from 'react';
 import playStore from '../../../images/playstore.png';
 import appStore from '../../../images/appstore.png';
+import { AiOutlineInstagram, AiOutlineTwitter, AiOutlineGithub } from 'react-icons/ai';
 import './Footer.css';
 
 const Footer = () => {
@@ -22,9 +23,9 @@ const Footer = () => {
 
       <div className="rightFooter">
         <h4>Follow Me</h4>
-        <a href="http://instagram.com/deveshxoxo">Instagram</a>
-        <a href="http://twitter.com/TulshyanDevesh">Twitter</a>
-        <a href="http://github.com/Devesh225">Github</a>
+        <a href="http://instagram.com/deveshxoxo"><AiOutlineInstagram /> Instagram</a>
+        <a href="http://twitter.com/TulshyanDevesh"><AiOutlineTwitter /> Twitter</a>
+        <a href="http://github.com/Devesh225"><AiOutlineGithub /> Github</a>
       </div>
     </footer>
   )
