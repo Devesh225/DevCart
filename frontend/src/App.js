@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/layout/Header/Header.js';
 import Home from './components/Home/Home.js';
-import { BrowserRouter as Router, Route } from  'react-router-dom'; 
+import { BrowserRouter as Router, Route, Routes } from  'react-router-dom'; 
 import WebFont from 'webfontloader';
 import { useEffect } from 'react';
 import Footer from './components/layout/Footer/Footer';
@@ -21,7 +21,11 @@ useEffect(() => {
   return (
     <Router>
       <Header />
-      <Route exact path="/" component={ Home } />
+      {/* IN REACT-ROUTER-DOM V6, WE HAVE TO WRAP ALL OUR ROUTE WITHIN ROUTES COMPONENT */}
+      <Routes>
+      {/* NOW WE HAVE TO USE element={<Component />} instead of earlier component={Component} */}
+        <Route exact path="/" element={<Home />} />
+      </Routes>
       <Footer />
     </Router>
 
