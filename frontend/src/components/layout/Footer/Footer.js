@@ -8,8 +8,7 @@ const Footer = () => {
   return (
     <footer id="footer">
       <div className="leftFooter">
-        <h4>DOWNLOAD OUR APP</h4>
-        <p>Android and IOS</p>
+        <h2>DOWNLOAD THE APP</h2>
         <img src={playStore} alt="playstore" />
         <img src={appStore} alt="appStore" />
       </div>
@@ -22,7 +21,7 @@ const Footer = () => {
       </div>
 
       <div className="rightFooter">
-        <h4>Follow Me</h4>
+        <h2>Follow Me</h2>
         <a href="http://instagram.com/deveshxoxo"><AiOutlineInstagram /> Instagram</a>
         <a href="http://twitter.com/TulshyanDevesh"><AiOutlineTwitter /> Twitter</a>
         <a href="http://github.com/Devesh225"><AiOutlineGithub /> Github</a>

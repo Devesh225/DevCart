@@ -1,11 +1,11 @@
 #footer {
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
     font-family: "Montserrat";
-    /* color: white; */
+    margin-top: 9vmax;
+    color: white;
     font-weight: 600;
-    /* background-color: rgb(34, 33, 33); */
+    background-color: rgb(34, 33, 33);
 }
 
 .leftFooter {
@@ -35,5 +35,6 @@
 .rightFooter > a {
     text-decoration: none;
     cursor: pointer;
-    /* color: white; */
+    color: white;
+    padding: 0.25vmax;
 }
