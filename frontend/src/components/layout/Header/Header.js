@@ -2,13 +2,15 @@ import React from 'react';
 import { ReactNavbar } from 'overlay-navbar';
 import { AiOutlineUser, AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai';
 import logo from "../../../images/logo.png";
+import './Header.css';
 
 const options = {
-    burgerColorHover: "#eb4034",
+    burgerColor: "#EEEEEE",
+    burgerColorHover: "#222831",
     logo,
     logoWidth: "10vmax",
     navColor1: "white",
-    logoHoverColor: "#eb4034",
+    logoHoverColor: "#00ADB5",
     link1Text: "Home",
     link2Text: "Products",
     link3Text: "Contact",
@@ -23,7 +25,7 @@ const options = {
     nav2justifyContent: "flex-end",
     nav3justifyContent: "flex-start",
     nav4justifyContent: "flex-start",
-    link1ColorHover: "#eb4034",
+    link1ColorHover: "#00ADB5",
     link1Margin: "1vmax",
     profileIconUrl: "/login",
     profileIconColor: "rgba(35, 35, 35,0.8)",
@@ -35,11 +37,10 @@ const options = {
     SearchIconElement: AiOutlineSearch,
     searchIconColor: "rgba(35, 35, 35,0.8)",
     cartIconColor: "rgba(35, 35, 35,0.8)",
-    profileIconColorHover: "#eb4034",
-    searchIconColorHover: "#eb4034",
-    cartIconColorHover: "#eb4034",
+    profileIconColorHover: "#00ADB5",
+    searchIconColorHover: "#00ADB5",
+    cartIconColorHover: "#00ADB5",
     cartIconMargin: "1vmax",
-    
 };
 
 const Header = () => {
