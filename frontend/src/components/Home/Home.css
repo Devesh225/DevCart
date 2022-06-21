@@ -1,0 +1,63 @@
+.banner {
+    background: linear-gradient(to right, #222831, #393E46);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vmin;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #EEEEEE;
+}
+  
+.banner > h1 {
+    margin: 5vmax;
+    font: 600 3vmax "Montserrat";
+}
+  
+.banner > p {
+    font: 300 1.8vmax "Montserrat";
+}
+  
+.banner > a > button {
+    margin-top: 3vmax;
+    margin-bottom: 5vmax;
+    cursor: pointer;
+    background-color: #EEEEEE;
+    border: 1px solid #EEEEEE;
+    border-radius: 0;
+    padding: 1vmax;
+    transition: all 0.5s;
+    width: 9vmax;
+    font: 500 1vmax "Montserrat";
+}
+
+.banner > a > button:hover {
+    background-color: #222831;
+    color: #EEEEEE;
+}
+
+.banner::after {
+    content: "";
+    width: 100vw;
+    height: 100vmin;
+    background-color: #EEEEEE;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    clip-path: polygon(100% 70%, 0 100%, 100% 100%);
+    max-width: 100%;
+}
+
+.homeHeading {
+    font-family: "Montserrat";
+    font-size: 1.5vmax;
+    border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+    width: 20vmax;
+    padding: 1vmax;
+    margin: 5vmax auto;
+    color: #393E46;
+    margin-top: 30vmax;
+}
