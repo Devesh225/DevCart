@@ -61,3 +61,17 @@
     margin: 5vmax auto;
     color: #393E46;
 }
+
+.container {
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+    }
+}
