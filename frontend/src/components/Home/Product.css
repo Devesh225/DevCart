@@ -1,0 +1,58 @@
+.productCard {
+    display: flex;
+    width: 16vmax;
+    flex-direction: column;
+    text-decoration: none;
+    font-family: "Montserrat";
+    margin: 3vmax;
+    transition: all 0.5s;
+    padding-bottom: 0.5vmax;
+}
+
+.productCard > img {
+    width: 16vmax;
+}
+
+.productCard > p {
+    font-size: 1.4vmax;
+    color: #222831;
+    margin-bottom: 0.5vmax;
+    margin-top: 1vmax;
+    margin-left: 0.5vmax;
+    font-weight: bold;
+}
+
+.productCard > div {
+    display: flex;
+    align-items: center;
+    font-size: 1.1vmax;
+    font-weight: bold;
+    margin-left: 0.5vmax;
+}
+
+.productCard > div > span {
+    margin: auto 0.75vmax;
+    color: #222831
+}
+
+.productCard > span {
+    margin: 0.75vmax;
+    margin-left: 0.5vmax;
+    font-size: 1.25vmax;
+    color: #00ADB5;
+    font-weight: bold;
+}
+
+.productCard > span::before {
+    content: "₹";
+    margin-right: 0.25vmax;
+    color: #00ADB5;
+    font-weight: bold;
+}
+
+.productCard:hover {
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.25);
+    transform: translateY(-0.5vmax);
+}
+
+
