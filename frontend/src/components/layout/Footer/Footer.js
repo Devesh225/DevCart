@@ -14,13 +14,13 @@ const Footer = () => {
       </div>
 
       <div className="midFooter">
-        <h1>DevCart</h1>
+        <h2>DEVCART</h2>
         <p>High Quality Products, <br /> Higher Quality Customers.</p>
-        <p>Copyright 2022 &copy; Devesh Tulshyan</p>
+        <span>Copyright 2022 &copy; Devesh Tulshyan</span>
       </div>
 
       <div className="rightFooter">
-        <h2>Follow Me</h2>
+        <h2>FOLLOW ME</h2>
         <a href="http://instagram.com/deveshxoxo"><AiOutlineInstagram /> Instagram</a>
         <a href="http://twitter.com/TulshyanDevesh"><AiOutlineTwitter /> Twitter</a>
         <a href="http://github.com/Devesh225"><AiOutlineGithub /> Github</a>
