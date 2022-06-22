@@ -6,12 +6,18 @@
     color: white;
     font-weight: 600;
     background-color: #393E46;
+    padding-top: 2vmax;
 }
 
 .leftFooter {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.leftFooter > h2 {
+    font-size: 1vmax;
+    padding-bottom: 0.75vmax;
 }
 
 .leftFooter > img {
@@ -26,15 +32,46 @@
     align-items: center;
 }
 
+.midFooter > h2 {
+    font-size: 1.5vmax;
+    padding-bottom: 1vmax;
+}
+
+.midFooter > p {
+    font-size: 1vmax;
+    padding: 0.75vmax;
+}
+
+.midFooter > span {
+    font-size: 1vmax;
+    padding-top: 3.5vmax;
+}
+
 .rightFooter {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.rightFooter > h2 {
+    font-size: 1.25vmax;
+    padding-bottom: 0.75vmax;
+}
+
 .rightFooter > a {
     text-decoration: none;
     cursor: pointer;
     color: white;
-    padding: 0.75vmax;
+    padding: 0.5vmax;
+    font-size: 1vmax;
+}
+
+@media screen and (max-width: 600px) {
+    .leftFooter {
+        margin-left: 1vmax;
+    }
+
+    .rightFooter {
+        margin-right: 1vmax;
+    }
 }
