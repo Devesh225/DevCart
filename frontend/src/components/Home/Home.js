@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import MetaData from '../layout/MetaData';
 import { CgMouse } from  'react-icons/cg';
 import Product from './Product.js'
 import './Home.css'
@@ -16,6 +17,9 @@ const product = {
 const Home = () => {
   return (
     <Fragment>
+
+      <MetaData title="DevCart" />
+
         <div className="banner">
             <h1>DevCart</h1>
             <p>A SHOPPING CART FOR DEVELOPERS</p>
