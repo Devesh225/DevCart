@@ -9,7 +9,7 @@ const options = {
     activeColor: "#00ADB5",
     value: 3.5,
     isHalf: true, // IF IT IS NOT GIVEN, RATINGS WILL BE SHOWN IN INTEGER VALUES, SO 3.5 WOULD BE SHOWN AS 3
-    size: window.innerWidth < 600 ? "15vmax" : "20vmax"
+    size: window.innerWidth < 600 ? 15 : 20
 }
 
 const Product = ({ product }) => {
