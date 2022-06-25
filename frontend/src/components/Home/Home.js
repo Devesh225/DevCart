@@ -4,6 +4,7 @@ import Product from './Product';
 import { CgMouse } from  'react-icons/cg';
 import { getProduct } from '../../actions/productAction';
 import { useSelector, useDispatch } from 'react-redux';
+import Loading from '../layout/Loading/Loading';
 import './Home.css'
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
 
   return (
     <Fragment>
-      {loading ? ("Loading...") : (
+      {loading ? (<Loading />) : (
         <Fragment>
           <MetaData title="DevCart" />
 
