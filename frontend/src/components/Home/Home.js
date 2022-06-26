@@ -5,17 +5,23 @@ import { CgMouse } from  'react-icons/cg';
 import { getProduct } from '../../actions/productAction';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../layout/Loading/Loading';
+import { useAlert, UseAlert } from 'react-alert';
 import './Home.css'
 
 const Home = () => {
+
+  const alert = useAlert();
 
   // IMPLEMENTING REDUX
   const dispatch = useDispatch();
   const { loading, products, productCount, error } = useSelector(state=>state.products);
 
   useEffect(() => {
+    if(error) {
+      return alert.error(error);
+    }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error]);
 
   return (
     <Fragment>
