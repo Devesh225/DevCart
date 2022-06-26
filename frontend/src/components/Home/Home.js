@@ -2,10 +2,10 @@ import React, { Fragment, useEffect } from 'react'
 import MetaData from '../layout/MetaData';
 import Product from './Product';
 import { CgMouse } from  'react-icons/cg';
-import { getProduct } from '../../actions/productAction';
+import { getAllProducts } from '../../actions/productAction';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../layout/Loading/Loading';
-import { useAlert, UseAlert } from 'react-alert';
+import { useAlert } from 'react-alert';
 import './Home.css'
 
 const Home = () => {
@@ -14,14 +14,14 @@ const Home = () => {
 
   // IMPLEMENTING REDUX
   const dispatch = useDispatch();
-  const { loading, products, productCount, error } = useSelector(state=>state.products);
+  const { loading, products, productsCount, error } = useSelector(state=>state.products);
 
   useEffect(() => {
     if(error) {
       return alert.error(error);
     }
-    dispatch(getProduct());
-  }, [dispatch, error]);
+    dispatch(getAllProducts());
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>
