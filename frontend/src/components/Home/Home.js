@@ -14,7 +14,7 @@ const Home = () => {
 
   // IMPLEMENTING REDUX
   const dispatch = useDispatch();
-  const { loading, products, productsCount, error } = useSelector(state=>state.products);
+  const { loading, products, error } = useSelector(state=>state.allProducts);
 
   useEffect(() => {
     if(error) {
