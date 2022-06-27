@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from  'react-router-dom';
 import WebFont from 'webfontloader';
 import { useEffect } from 'react';
 import Footer from './components/layout/Footer/Footer';
+import ProductDetails from './components/Product/ProductDetails'
 
 function App() {
 
@@ -25,6 +26,7 @@ useEffect(() => {
       <Routes>
       {/* NOW WE HAVE TO USE element={<Component />} instead of earlier component={Component} */}
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/product/:id" element={<ProductDetails />} />
       </Routes>
       <Footer />
     </Router>
