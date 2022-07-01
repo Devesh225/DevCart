@@ -1,0 +1,31 @@
+.productDetails {
+    background-color: rgb(255, 255, 255);
+    width: 100vw;
+    max-width: 100%;
+    padding: 8vmax;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.productDetails > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2vmax;
+    box-sizing: border-box;
+    border: 1px solid white;
+}
+
+.productDetails > div:first-child {
+    text-align: center;
+}
+
+
+.productDetails > div:last-child {
+    align-items: flex-start;
+} 
+  
+.carouselImage {
+    width: 20vmax;
+} 
