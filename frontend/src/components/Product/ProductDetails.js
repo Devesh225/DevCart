@@ -64,6 +64,7 @@ const ProductDetails = () => {
                         </div>
                         <p>
                             Status:
+                            &nbsp;
                             <b className={product.stock < 1 ? "redColor" : "greenColor"}>
                             {product.stock < 1 ? "Currently Out Of Stock" : "Currently Available"}
                             </b>
@@ -71,7 +72,7 @@ const ProductDetails = () => {
                     </div>
 
                     <div className="detailsBlock_4">
-                        Description : <p>{product.description}</p>
+                        Description <p>{product.description}</p>
                     </div>
 
                     <button className="submitReview">
