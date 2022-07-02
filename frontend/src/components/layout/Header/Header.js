@@ -5,12 +5,12 @@ import logo from "../../../images/logo.png";
 import './Header.css';
 
 const options = {
-    burgerColor: "#EEEEEE",
+    burgerColor: "#DA0037",
     burgerColorHover: "#222831",
     logo,
     logoWidth: "10vmax",
     navColor1: "white",
-    logoHoverColor: "#00ADB5",
+    logoHoverColor: "#DA0037",
     link1Text: "Home",
     link2Text: "Products",
     link3Text: "Contact",
@@ -25,7 +25,7 @@ const options = {
     nav2justifyContent: "flex-end",
     nav3justifyContent: "flex-start",
     nav4justifyContent: "flex-start",
-    link1ColorHover: "#00ADB5",
+    link1ColorHover: "#DA0037",
     link1Margin: "1vmax",
     profileIconUrl: "/login",
     profileIconColor: "rgba(35, 35, 35,0.8)",
@@ -37,9 +37,9 @@ const options = {
     SearchIconElement: AiOutlineSearch,
     searchIconColor: "rgba(35, 35, 35,0.8)",
     cartIconColor: "rgba(35, 35, 35,0.8)",
-    profileIconColorHover: "#00ADB5",
-    searchIconColorHover: "#00ADB5",
-    cartIconColorHover: "#00ADB5",
+    profileIconColorHover: "#DA0037",
+    searchIconColorHover: "#DA0037",
+    cartIconColorHover: "#DA0037",
     cartIconMargin: "1vmax",
 };
 
