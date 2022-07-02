@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import MetaData from '../layout/MetaData';
 import Product from './Product';
 import { CgMouse } from  'react-icons/cg';
-import { getAllProducts } from '../../actions/productAction';
+import { clearErrors, getAllProducts } from '../../actions/productAction';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../layout/Loading/Loading';
 import { useAlert } from 'react-alert';
@@ -18,7 +18,8 @@ const Home = () => {
 
   useEffect(() => {
     if(error) {
-      return alert.error(error);
+        alert.error(error);
+        dispatch(clearErrors());
     }
     dispatch(getAllProducts());
   }, [dispatch, error, alert]);
