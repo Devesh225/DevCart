@@ -113,8 +113,7 @@
   
 .detailsBlock_4 {
     color: rgba(0, 0, 0, 0.897);
-    text-align: center;
-    font: 700 1.2vmax "Montserrat";
+    font: 700 1.5vmax "Montserrat";
 }
   
 .detailsBlock_4 > p {
@@ -145,12 +144,14 @@
 .reviewsHeading {
     text-align: center;
     font-family: "Montserrat";
-    font-size: 2.5vmax;
-    margin-top: 0.5vmax;
+    font-size: 2vmax;
+    margin-top: 2vmax;
+    margin-bottom: 2vmax;
 }
 
 .reviews {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5vmax;
+    justify-items: center;
 }
