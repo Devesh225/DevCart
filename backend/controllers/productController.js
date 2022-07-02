@@ -78,6 +78,7 @@ exports.createUpdateProductReview = catchAsyncError(async(req, res, next) => {
     const review = {
         user: req.user.id,
         name: req.user.name,
+        profilePicture: req.user.avatar.url,
         rating: Number(rating),
         comment: comment,
     }
