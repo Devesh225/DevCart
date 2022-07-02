@@ -5,6 +5,7 @@ import Carousel from 'react-material-ui-carousel';
 import './ProductDetails.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProduct } from '../../actions/productAction';
+import Review from './Review';
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,6 @@ const ProductDetails = () => {
         value: product.rating,
         isHalf: true, // IF IT IS NOT GIVEN, RATINGS WILL BE SHOWN IN INTEGER VALUES, SO 3.5 WOULD BE SHOWN AS 3
         size: window.innerWidth < 600 ? 15 : 20,
-        onChange: product.rating
     }
     
 
@@ -80,6 +80,17 @@ const ProductDetails = () => {
                     </button>
                 </div>
             </div>
+
+            <h3 className='reviewsHeading'>REVIEWS</h3>
+            {product.reviews ? (
+                <div className="reviews">
+                    {product.reviews.map((review, index) => {
+                        return <Review key={index} review={review} />
+                    })}
+                </div>
+            ) : (
+                <p className='noReviews'>No Reviews Yet</p>
+            )}
         </Fragment>
     )
 }
