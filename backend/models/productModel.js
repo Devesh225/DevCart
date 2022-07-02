@@ -54,6 +54,9 @@ const productSchema = new mongoose.Schema({
                 type: String,
                 required: [true, "Please enter product name"]
             },
+            profilePicture: {
+                type: String,
+            },
             rating: {
                 type: Number,
                 required: true,
