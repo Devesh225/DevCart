@@ -1,0 +1,19 @@
+.reviewCard {
+    flex: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.226);
+    border: 1px solid rgba(21, 21, 21, 0.5);
+    width: 25vmax;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1vmax;
+    padding: 1.25vmax;
+    transition: all 0.25s;
+    font-family: "Montserrat";
+    font-size: 1.1vmax;
+}
+
+.reviewCard:hover {
+    box-shadow: 0 0 5px rgba(15, 15, 15, 0.25);
+    transform: translateY(-0.5vmax);
+}
