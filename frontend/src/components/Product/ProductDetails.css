@@ -5,6 +5,7 @@
     padding: 8vmax;
     box-sizing: border-box;
     display: flex;
+    margin-top: 3vmax;
 }
 
 .productDetails > div {
@@ -149,9 +150,113 @@
     margin-bottom: 2vmax;
 }
 
+.moreReviewsHeading {
+    text-align: center;
+    font-family: "Montserrat";
+    font-size: 1.5vmax;
+    margin-top: 2vmax;
+    margin-bottom: 2vmax;
+    cursor: pointer;
+}
+
 .reviews {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.5vmax;
     justify-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    .productDetails {
+        margin-top: 5vmax;
+        flex-direction: column;
+        height: unset;
+        padding: 4vmax;
+    }
+  
+    .productDetails > div:last-child {
+        align-items: center;
+    }
+  
+    .detailsBlock_1 > h2 {
+        font-size: 2.25vmax;
+        text-align: center;
+    }
+  
+    .detailsBlock_2 {
+        justify-content: center;
+    }
+
+    .detailsBlock_2 > span {
+        font-size: 1.5vmax;
+    }
+  
+    .detailsBlock_3 > h1 {
+        font: 700 3vmax "Montserrat";
+        text-align: center;
+    }
+  
+    .detailsBlock_3_1 {
+        flex-direction: column;
+    }
+  
+    .detailsBlock_3_1_1 {
+        padding: 2vmax 0;
+    }
+
+    .detailsBlock_3_1_1 > button {
+        padding: 1vmax;
+        width: 3vmax;
+    }
+  
+    .detailsBlock_3_1_1 > input {
+        padding: 1.5vmax;
+        width: 3vmax;
+        font: 600 1.8vmax "Montserrat";
+    }
+  
+    .detailsBlock_3_1 > button:last-child {
+        font: 600 1.7vmax "Montserrat";
+        padding: 1.5vmax;
+        width: 20vmax;
+        margin: 3vmax 0;
+    }
+  
+    .detailsBlock_3 > p {
+        padding: 2vmax 0;
+        text-align: center;
+        font: 600 1.5vmax "Montserrat";
+    }
+  
+    .detailsBlock_4 {
+        padding-top: 2vmax;
+        font: 600 2vmax "Montserrat";
+        text-align: center;
+    }
+  
+    .detailsBlock_4 > p {
+        font: 600 1.5vmax "Montserrat";
+    }
+  
+    .submitReview {
+        font: 600 1.7vmax "Montserrat";
+        padding: 1.5vmax;
+        width: 20vmax;
+        margin: 3vmax 0;
+    }
+  
+    .reviewCard > p {
+        font: 600 3vw "Montserrat";
+    }
+
+    .reviewCardComment {
+        font: 300 5vw "Montserrat";
+    }
+
+    .reviews {
+        grid-template-columns: 1fr;
+    }
+
+    .moreReviewsHeading {
+        font-size: 1.5vmax;
+    }
 }
