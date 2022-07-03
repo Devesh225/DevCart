@@ -11,7 +11,7 @@ const Product = ({ product }) => {
     activeColor: "#00ADB5",
     value: product.rating,
     isHalf: true, // IF IT IS NOT GIVEN, RATINGS WILL BE SHOWN IN INTEGER VALUES, SO 3.5 WOULD BE SHOWN AS 3
-    size: window.innerWidth < 600 ? 15 : 20
+    size: window.innerWidth < 600 ? 10 : 20
   }
 
   return (
