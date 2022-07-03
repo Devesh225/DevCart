@@ -71,6 +71,13 @@
 }
 
 @media screen and (max-width: 600px) {
+    .banner {
+        height: 100vmax;
+    }
+    .banner::after {
+        width: 0;
+        height: 0;
+    }
     .container {
         width: 100%;
     }
