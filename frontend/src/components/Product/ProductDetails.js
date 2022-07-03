@@ -104,6 +104,8 @@ const ProductDetails = () => {
                     ) : (
                         <p className='noReviews'>No Reviews Yet</p>
                     )}
+
+                    <h3 className='moreReviewsHeading'>CLICK FOR MORE REVIEWS</h3>
                 </Fragment>
             )
         }
