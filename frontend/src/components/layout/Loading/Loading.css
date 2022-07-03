@@ -11,13 +11,13 @@
     font-family: "Montserrat";
     font-weight: bold;
     font-size: 3vmax;
-    color: #00ADB5
+    color: #DA0037;
 }
 
 .loading > div {   
     height: 10vmax;
     width: 10vmax;
-    border-bottom: 5px solid #00ADB5;
+    border-bottom: 5px solid #DA0037;
     border-radius: 50%;
     animation: loadingRotate 800ms linear infinite;
 }
