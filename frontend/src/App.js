@@ -6,6 +6,7 @@ import WebFont from 'webfontloader';
 import { useEffect } from 'react';
 import Footer from './components/layout/Footer/Footer';
 import ProductDetails from './components/Product/ProductDetails'
+import Products from './components/Product/Products.js';
 
 function App() {
 
@@ -27,6 +28,7 @@ useEffect(() => {
       {/* NOW WE HAVE TO USE element={<Component />} instead of earlier component={Component} */}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
+        <Route exact path="/products" element={<Products />} />
       </Routes>
       <Footer />
     </Router>
