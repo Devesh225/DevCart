@@ -1,0 +1,15 @@
+.productsHeader {
+    font: 600 2vmax "Montserrat";
+    text-align: center;
+    margin: 6vmax auto;
+    width: 15vw;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+    padding: 1vmax;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    min-height: 30vh;
+}
