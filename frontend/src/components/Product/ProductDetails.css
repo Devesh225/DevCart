@@ -150,19 +150,9 @@
     margin-bottom: 2vmax;
 }
 
-.moreReviewsHeading {
-    text-align: center;
-    font-family: "Montserrat";
-    font-size: 1.5vmax;
-    margin-top: 2vmax;
-    margin-bottom: 2vmax;
-    cursor: pointer;
-}
-
 .reviews {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
+    display: flex;
+    overflow: scroll;
 }
 
 @media screen and (max-width: 600px) {
@@ -250,13 +240,5 @@
 
     .reviewCardComment {
         font: 300 5vw "Montserrat";
-    }
-
-    .reviews {
-        grid-template-columns: 1fr;
-    }
-
-    .moreReviewsHeading {
-        font-size: 1.5vmax;
     }
 }
