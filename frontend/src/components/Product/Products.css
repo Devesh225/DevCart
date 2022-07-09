@@ -13,3 +13,55 @@
     justify-content: space-evenly;
     min-height: 30vh;
 }
+
+.paginationBox {
+    display: flex;
+    justify-content: center;
+    margin: 5vmax;
+}
+  
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+  
+.page-item {
+    background-color: rgb(255, 255, 255);
+    list-style: none;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    padding: 1vmax 2vmax;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.page-item:first-child {
+    border-radius: 5px 0 0 5px;
+}
+  
+.page-item:last-child {
+    border-radius: 0 5px 5px 0;
+}
+
+.page-link {
+    text-decoration: none;
+    font: 600 0.9vmax "Montserrat";
+    color: rgb(80, 80, 80);
+    transition: all 0.3s;
+}
+  
+.page-item:hover {
+    background-color: rgb(230, 230, 230);
+}
+  
+.page-item:hover .page-link {
+    color: rgb(0, 0, 0);
+}
+  
+.pageItemActive {
+    background-color: #DA0037;
+}
+  
+.pageLinkActive {
+    color: white;
+}
