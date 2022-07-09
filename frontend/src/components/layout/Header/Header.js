@@ -5,7 +5,7 @@ import logo from "../../../images/logo.png";
 import './Header.css';
 
 const options = {
-    burgerColor: "#DA0037",
+    burgerColor: "lightgray",
     burgerColorHover: "#222831",
     logo,
     logoWidth: "10vmax",
