@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 
 const Products = () => {
     const dispatch = useDispatch();
-    const keyword = useParams();
+    const { keyword } = useParams();
     const { loading, error, products, productsCount } = useSelector(state => state.allProducts);
 
     useEffect(() => {
