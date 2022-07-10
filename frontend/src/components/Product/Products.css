@@ -65,3 +65,13 @@
 .pageLinkActive {
     color: white;
 }
+
+.filterBox {
+    width: 15vmax;
+    position: absolute;
+    text-align: center;
+    top: calc(50%);
+    right: -4vmax;
+    transform: rotate(90deg);
+}
+  
