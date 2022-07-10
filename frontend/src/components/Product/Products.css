@@ -8,9 +8,12 @@
 }
 
 .products {
+    width: 75%;
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin: 0 auto;
     min-height: 30vh;
 }
 
@@ -67,6 +70,12 @@
 }
 
 .filterBox {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.priceFilterBox {
     width: 15vmax;
     position: absolute;
     text-align: center;
@@ -74,4 +83,54 @@
     right: -4vmax;
     transform: rotate(90deg);
 }
+
+.categoryFilterBox {
+    position: absolute;
+    left: 2vmax;
+    text-align: left;
+    top: calc(25%);
+}
+
+.categoryBox {
+    padding: 0%;
+}
   
+.category-link {
+    list-style: none;
+    color: rgba(0, 0, 0, 0.61);
+    font: 600 0.8vmax "Montserrat";
+    margin: 0.4vmax;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.category-link:hover {
+    color: tomato;
+}
+
+fieldset {
+    position: absolute;
+    left: 2vmax;
+    text-align: left;
+    top: calc(55%);
+}
+
+@media screen and (max-width: 600px) {
+    .priceFilterBox {
+        width: 15vmax;
+        position: static;
+        margin: auto;
+        padding-top: 5vmax;
+        transform: rotate(0deg);
+    }
+
+    .categoryFilterBox {
+        position: static;
+        margin: auto;
+    }
+
+    fieldset {
+        position: static;
+        margin: auto;
+    }
+}
