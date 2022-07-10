@@ -6,22 +6,31 @@ import { getAllProducts } from '../../actions/productAction';
 import Product from '../Home/Product';
 import { useParams } from 'react-router-dom';
 import Pagination from 'react-js-pagination';
+import Slider from "@material-ui/core/Slider";
+import Typography from "@material-ui/core/Typography";
 
 
 const Products = () => {
     const dispatch = useDispatch();
     const { keyword } = useParams();
-    const { loading, error, products, productsCount, resultPerPage } = useSelector(state => state.allProducts);
+    const { loading, products, productsCount, resultPerPage, filteredProductsCount } = useSelector(state => state.allProducts);
 
     const [currentPage, setCurrentPage] = useState(1);
+    
 
     const setCurrentPageNumber = (e) => {
       setCurrentPage(e);
     }
 
+    const [price, setPrice] = useState([0, 500000]);
+
+    const priceHandler = (event, newPrice) => {
+      setPrice(newPrice);
+    };
+
     useEffect(() => {
-      dispatch(getAllProducts(keyword, currentPage));
-    }, [dispatch, keyword, currentPage])
+      dispatch(getAllProducts(keyword, currentPage, price));
+    }, [dispatch, keyword, currentPage, price])
     
   return (
     <Fragment>
@@ -33,8 +42,20 @@ const Products = () => {
                 })}
             </div>
 
-            {/* ONLY SHOW PAGINATION WHEN RESULTS PER PAGE IS LESS THAN PDOCUTS COUNT. */}
-            { resultPerPage < productsCount && 
+            <div className="filterBox">
+              <Typography>Price Range</Typography>
+              <Slider
+                  value={price}
+                  onChange={priceHandler}
+                  valueLabelDisplay="auto"
+                  aria-labelledby="range-slider"
+                  min={0}
+                  max={500000}
+              />
+            </div>
+
+            {/* ONLY SHOW PAGINATION WHEN RESULTS PER PAGE IS LESS THAN PRODUCTS COUNT. */}
+            { resultPerPage < filteredProductsCount && 
               <div className="paginationBox">
                 <Pagination
                   activePage={currentPage}
