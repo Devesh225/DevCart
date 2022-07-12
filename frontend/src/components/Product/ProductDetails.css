@@ -155,6 +155,12 @@
     overflow: scroll;
 }
 
+.noReviews {
+    font: 600 1.5vmax "Montserrat";
+    text-align: center;
+    text-decoration: underline;
+}
+
 @media screen and (max-width: 600px) {
     .productDetails {
         margin-top: 5vmax;

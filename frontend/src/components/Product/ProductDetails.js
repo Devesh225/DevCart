@@ -97,7 +97,7 @@ const ProductDetails = () => {
                     </div>
 
                     <h3 className='reviewsHeading'>REVIEWS</h3>
-                    {product.reviews ? (
+                    {product.numberOfReviews !== 0 ? (
                         <div className="reviews">
                             {product.reviews.map((review, index) => {
                                 return <Review key={index} review={review} />
