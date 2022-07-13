@@ -1,4 +1,4 @@
-.loginRegister {
+.loginRegisterContainer {
     width: 100vw;
     height: 100vh;
     max-width: 100%;
@@ -13,20 +13,20 @@
   
 .loginRegisterBox {
     background-color: white;
-    width: 25vw;
-    height: 70vh;
+    width: 30vw;
+    height: 80vh;
     box-sizing: border-box;
     overflow: hidden;
 }
 
 .loginRegisterToggle {
     display: flex;
-    height: 3vmax;
+    padding-top: 1vmax;
 }
 
 .loginRegisterToggle > p {
     color: rgba(0, 0, 0, 0.678);
-    font: 300 1vmax "Roboto";
+    font: 600 1vmax "Montserrat";
     transition: all 0.5s;
     cursor: pointer;
     display: grid;
@@ -38,7 +38,7 @@
     color: tomato;
 }
   
-.loginRegisterBox > div > button {
+.loginRegisterBox > button {
     background-color: tomato;
     height: 3px;
     width: 50%;
@@ -77,7 +77,7 @@
     box-sizing: border-box;
     border: 1px solid rgba(0, 0, 0, 0.267);
     border-radius: 4px;
-    font: 300 0.9vmax cursive;
+    font: 600 0.9vmax "Montserrat";
     outline: none;
 }
   
@@ -92,9 +92,8 @@
 .loginForm > a {
     color: rgba(0, 0, 0, 0.651);
     text-decoration: none;
-    align-self: flex-end;
     transition: all 0.5s;
-    font: 500 0.8vmax "Gill Sans";
+    font: 600 0.8vmax "Montserrat";
 }
   
 .loginForm > a:hover {
@@ -106,7 +105,7 @@
     border: none;
     background-color: tomato;
     color: white;
-    font: 300 0.9vmax "Roboto";
+    font: 600 0.9vmax "Montserrat";
     width: 100%;
     padding: 0.8vmax;
     cursor: pointer;
@@ -136,10 +135,9 @@
      transform: translateX(100%);
 }
 
-/* Image in Register */
 #registerImage > img {
-    width: 3vmax;
-    border-radius: 100%;
+    width: 2.5vmax;
+    padding-right: 1vmax;
 }
 
 #registerImage > input {
@@ -154,7 +152,7 @@
     height: 5vh;
     border: none;
     margin: 0%;
-    font: 400 0.8vmax cursive;
+    font: 600 0.8vmax "Montserrat";
     transition: all 0.5s;
     padding: 0 1vmax;
     color: rgba(0, 0, 0, 0.623);
