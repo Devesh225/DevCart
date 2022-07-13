@@ -1,10 +1,10 @@
 import React, { Fragment, useRef, useState } from 'react'
-import './LoginRegister.css';
 import { Link } from "react-router-dom";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import FaceIcon from "@mui/icons-material/Face";
 import Loading from '../layout/Loading/Loading';
+import './LoginRegister.css';
 
 const LoginRegister = () => {
 
@@ -21,7 +21,7 @@ const LoginRegister = () => {
   });
   const { name, email, password } = user;
   const [avatar, setAvatar] = useState("");
-  const [avatarPreview, setAvatarPreview] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState("./avatarPreview.png");
 
   const registerDataChange = (e) => {
       if (e.target.name === "avatar") {
@@ -74,15 +74,14 @@ const LoginRegister = () => {
 
   return (
     <Fragment>
-        <div className="loginRegister">
+        <div className="loginRegisterContainer">
           <div className="loginRegisterBox">
             <div className="loginRegisterToggle">
               <p onClick={(e) => switchTabs(e, "login")}>LOGIN</p>
               <p onClick={(e) => switchTabs(e, "register")}>REGISTER</p>
             </div>
             <button ref={switcherTab}></button>
-          </div>
-          <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
+            <form className="loginForm" ref={loginTab} onSubmit={loginSubmit}>
             <div className="loginEmail">
               <MailOutlineIcon />
               <input
@@ -103,16 +102,17 @@ const LoginRegister = () => {
                 onChange={(e) => setLoginPassword(e.target.value)}
               />
             </div>
-            <Link to="/password/forgot">Forgot Password?</Link>
+            
             <input type="submit" value="Login" className="loginBtn" />
+            <Link to="/password/forgot">Forgot Password?</Link>
           </form>
           <form
-            className="signUpForm"
+            className="registerForm"
             ref={registerTab}
             encType="multipart/form-data"
             onSubmit={registerSubmit}
           >
-            <div className="signUpName">
+            <div className="registerName">
               <FaceIcon />
               <input
                 type="text"
@@ -123,7 +123,7 @@ const LoginRegister = () => {
                 onChange={registerDataChange}
               />
             </div>
-            <div className="signUpEmail">
+            <div className="registerEmail">
               <MailOutlineIcon />
               <input
                 type="email"
@@ -134,7 +134,7 @@ const LoginRegister = () => {
                 onChange={registerDataChange}
               />
             </div>
-            <div className="signUpPassword">
+            <div className="registerPassword">
               <LockOpenIcon />
               <input
                 type="password"
@@ -147,7 +147,7 @@ const LoginRegister = () => {
             </div>
 
             <div id="registerImage">
-              <img src={avatarPreview} alt="Avatar Preview" />
+              <img src={avatarPreview} alt="" />
               <input
                 type="file"
                 name="avatar"
@@ -155,8 +155,9 @@ const LoginRegister = () => {
                 onChange={registerDataChange}
               />
             </div>
-            <input type="submit" value="Register" className="signUpBtn" />
+            <input type="submit" value="Register" className="registerBtn" />
           </form>
+          </div>
         </div>
     </Fragment>
   )
