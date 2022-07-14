@@ -54,7 +54,7 @@
     margin: auto;
     padding: 2vmax;
     justify-content: space-evenly;
-    height: 70%;
+    height: 90%;
     transition: all 0.5s;
 }
   
@@ -161,4 +161,45 @@
   
 #registerImage > input::file-selector-button:hover {
     background-color: rgb(235, 235, 235);
+}
+
+@media screen and (max-width: 600px) {
+    .loginRegisterBox {
+        width: 60vw;
+        height: 50vh;
+    }
+
+    .loginRegisterToggle {
+        padding-top: 2vmax;
+    }
+
+    .loginRegisterToggle > p {
+        font-size: 1.75vmax;
+    }
+
+    .loginForm,
+    .registerForm {
+        height: 80%;
+    }
+
+    .loginForm > div > input,
+    .registerForm > div > input {
+        font-size: 1.5vmax;
+    }
+
+    .loginBtn,
+    .registerBtn {
+        font-size: 1.75vmax;
+        width: 75%;
+    }
+
+    #registerImage > input::file-selector-button {
+        font-size: 1.5vmax;
+        height: 3vh;
+    }
+
+    span {
+        font-size: 1.25vmax;
+    }
+    
 }
