@@ -104,7 +104,7 @@ const LoginRegister = () => {
             </div>
             
             <input type="submit" value="Login" className="loginBtn" />
-            <Link to="/password/forgot">Forgot Password?</Link>
+            <Link to="/password/forgot"><span>Forgot Password?</span></Link>
           </form>
           <form
             className="registerForm"
