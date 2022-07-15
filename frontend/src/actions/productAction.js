@@ -7,7 +7,11 @@ export const getAllProducts = (keyword="", currentPage=1, price=[0, 500000], cat
             type: ALL_PRODUCT_REQUEST,
         });
 
-        let link = `/api/products?keyword=${keyword}&page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&rating[gte]=${rating}`;
+        let link = `/api/products?page=${currentPage}&price[gte]=${price[0]}&price[lte]=${price[1]}&rating[gte]=${rating}`;
+
+        if(keyword) {
+            link = link + `&keyword=${keyword}`
+        }
 
         if(category) {
             link = link + `&category=${category}`
