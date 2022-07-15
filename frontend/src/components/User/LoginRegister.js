@@ -1,12 +1,31 @@
-import React, { Fragment, useRef, useState } from 'react'
+import React, { Fragment, useRef, useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import FaceIcon from "@mui/icons-material/Face";
 import Loading from '../layout/Loading/Loading';
 import './LoginRegister.css';
+import { clearErrors, login } from '../../actions/userAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAlert } from 'react-alert';
+import { useNavigate } from 'react-router-dom';
 
 const LoginRegister = () => {
+  const alert = useAlert();
+  const dispatch = useDispatch();
+  const {loading, error, isAuthenticated} = useSelector(state => state.user);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(error) {
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if(isAuthenticated) {
+      navigate("/account");
+    }
+  }, [dispatch, error, alert, navigate, isAuthenticated]);
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);
@@ -42,8 +61,9 @@ const LoginRegister = () => {
   };
 
 
-  const loginSubmit = () => {
-      console.log("Login Form Submitted");
+  const loginSubmit = (e) => {
+      e.preventDefault();
+      dispatch(login(loginEmail, loginPassword));
   }
 
   const registerSubmit = (e) => {
@@ -74,6 +94,9 @@ const LoginRegister = () => {
 
   return (
     <Fragment>
+      { loading ? (<Loading />) : 
+      (
+        <Fragment>
         <div className="loginRegisterContainer">
           <div className="loginRegisterBox">
             <div className="loginRegisterToggle">
@@ -159,6 +182,9 @@ const LoginRegister = () => {
           </form>
           </div>
         </div>
+    </Fragment>
+      ) 
+      }
     </Fragment>
   )
 }
