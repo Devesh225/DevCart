@@ -5,7 +5,7 @@ import LockOpenIcon from "@mui/icons-material/LockOpen";
 import FaceIcon from "@mui/icons-material/Face";
 import Loading from '../layout/Loading/Loading';
 import './LoginRegister.css';
-import { clearErrors, login } from '../../actions/userAction';
+import { clearErrors, login, register } from '../../actions/userAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import { useNavigate } from 'react-router-dom';
@@ -73,7 +73,7 @@ const LoginRegister = () => {
       myForm.set("email", email);
       myForm.set("password", password);
       myForm.set("avatar", avatar);
-      console.log("Register Form Submitted");
+      dispatch(register(myForm));
   };
 
   const switchTabs = (e, tab) => {
