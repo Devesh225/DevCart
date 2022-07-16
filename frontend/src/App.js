@@ -9,6 +9,8 @@ import ProductDetails from './components/Product/ProductDetails'
 import Products from './components/Product/Products.js';
 import Search from './components/Product/Search.js'
 import LoginRegister from './components/User/LoginRegister';
+import store from './store';
+import { loadLoggedInUser } from './actions/userAction';
 
 function App() {
 
@@ -19,6 +21,9 @@ useEffect(() => {
       families: ["Montserrat", "Roboto", "Droid Sans"]
     }
   });
+
+  store.dispatch(loadLoggedInUser());
+
 }, []);
 
 
