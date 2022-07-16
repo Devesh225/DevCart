@@ -25,7 +25,6 @@ const ProductDetails = () => {
             alert.error(error);
             dispatch(clearErrors());
         }
-
         dispatch(getProduct(id));
 
     }, [dispatch, id, alert, error]);
@@ -97,7 +96,7 @@ const ProductDetails = () => {
                     </div>
 
                     <h3 className='reviewsHeading'>REVIEWS</h3>
-                    {product.numberOfReviews !== 0 ? (
+                    {product.reviews ? (
                         <div className="reviews">
                             {product.reviews.map((review, index) => {
                                 return <Review key={index} review={review} />
