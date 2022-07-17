@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Header from './components/layout/Header/Header.js';
 import Home from './components/Home/Home.js';
@@ -11,9 +12,12 @@ import Search from './components/Product/Search.js'
 import LoginRegister from './components/User/LoginRegister';
 import store from './store';
 import { loadLoggedInUser } from './actions/userAction';
+import UserMenu from './components/layout/Header/UserMenu';
+import { useSelector } from 'react-redux';
 
 function App() {
 
+const { isAuthenticated, user } = useSelector(state => state.user);
 // TO LOAD THE FONT at componentDidMount
 useEffect(() => {
   WebFont.load({
@@ -30,6 +34,7 @@ useEffect(() => {
   return (
     <Router>
       <Header />
+      { isAuthenticated && <UserMenu user={user} /> }
       {/* IN REACT-ROUTER-DOM V6, WE HAVE TO WRAP ALL OUR ROUTE WITHIN ROUTES COMPONENT */}
       <Routes>
       {/* NOW WE HAVE TO USE element={<Component />} instead of earlier component={Component} */}
