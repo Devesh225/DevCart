@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOAD_LOGGED_IN_USER_REQUEST, LOAD_LOGGED_IN_USER_SUCCESS, LOAD_LOGGED_IN_USER_FAILURE} from '../constants/userConstants';
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOAD_LOGGED_IN_USER_REQUEST, LOAD_LOGGED_IN_USER_SUCCESS, LOAD_LOGGED_IN_USER_FAILURE, LOGOUT_SUCCESS, LOGOUT_FAILURE} from '../constants/userConstants';
 
 export const login = (email, password) => async(dispatch) => {
     try {
@@ -86,6 +86,25 @@ export const loadLoggedInUser = () => async(dispatch) => {
         });
     }
 };
+
+export const logout = () => async(dispatch) => {
+    try {
+
+        await axios.get(`/api/logout`);
+
+        dispatch({
+            type: LOGOUT_SUCCESS
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: LOGOUT_FAILURE,
+            payload: error.response.data.message
+        });
+    }
+};
+
 
 export const clearErrors = () => async(dispatch) => {
     dispatch({
