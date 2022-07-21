@@ -21,12 +21,12 @@
 
 .profileContainer > div:first-child > h1 {
     color: rgba(0, 0, 0, 0.555);
-    font: 500 2.2vmax "Roboto";
+    font: 600 2.2vmax "Montserrat";
     transform: translateX(-10vmax) translateY(-2vmax);
 }
   
 .profileContainer > div:first-child > img {
-    width: 20vmax;
+    width: 15vmax;
     border-radius: 100%;
     transition: all 0.5s;
 }
@@ -38,7 +38,7 @@
 .profileContainer > div:first-child > a {
     border: none;
     background-color: tomato;
-    font: 400 1vmax "Roboto";
+    font: 600 1vmax "Montserrat";
     color: white;
     text-decoration: none;
     padding: 0.5vmax;
@@ -61,12 +61,12 @@
   
 .profileContainer > div:last-child > div > h4 {
     color: black;
-    font: 400 1.2vmax "Roboto";
+    font: 600 1.2vmax "Montserrat";
 }
   
 .profileContainer > div:last-child > div > p {
     color: rgba(0, 0, 0, 0.418);
-    font: 400 1vmax cursive;
+    font: 600 1vmax "Montserrat";
     margin: 0.2vmax;
 }
   
