@@ -41,8 +41,8 @@
     font: 600 1vmax "Montserrat";
     color: white;
     text-decoration: none;
-    padding: 0.5vmax;
-    width: 30%;
+    padding: 1vmax;
+    width: 50%;
     margin: 4vmax;
     text-align: center;
     transition: all 0.5s;
@@ -79,7 +79,7 @@
 .profileContainer > div:last-child > div:last-child > a {
     border: none;
     background-color: rgb(68, 68, 68);
-    font: 400 1vmax "Roboto";
+    font: 600 1vmax "Montserrat";
     color: white;
     text-decoration: none;
     padding: 0.5vmax;
