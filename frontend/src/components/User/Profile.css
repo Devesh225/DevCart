@@ -55,12 +55,12 @@
   
 .profileContainer > div:last-child > div > h4 {
     color: black;
-    font: 600 1.2vmax "Montserrat";
+    font: 600 1.5vmax "Montserrat";
 }
   
 .profileContainer > div:last-child > div > p {
     color: rgba(0, 0, 0, 0.418);
-    font: 600 1vmax "Montserrat";
+    font: 600 1.25vmax "Montserrat";
     margin: 0.2vmax;
 }
   
@@ -76,7 +76,7 @@
     font: 600 1vmax "Montserrat";
     color: white;
     text-decoration: none;
-    padding: 0.5vmax;
+    padding: 0.75vmax;
     text-align: center;
     transition: all 0.5s;
     margin: 1vmax 0;
