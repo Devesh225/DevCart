@@ -85,3 +85,39 @@
 .profileContainer > div:last-child > div:last-child > a:hover {
     background-color: rgb(31, 31, 31);
 }
+
+@media screen and (max-width: 600px) {
+    .profileContainer {
+      flex-direction: column;
+    }
+  
+    .profileContainer > div:first-child > h1 {
+      font: 600 3.5vmax "Montserrat";
+      transform: translateY(-2vmax);
+    }
+  
+    .profileContainer > div:first-child > a {
+      font: 600 2vmax "Montserrat";
+      padding: 1vmax;
+    }
+  
+    .profileContainer > div:last-child {
+      text-align: center;
+      align-items: center;
+    }
+  
+    .profileContainer > div:last-child > div > h4 {
+      font: 600 2.5vmax "Montserrat";
+    }
+  
+    .profileContainer > div:last-child > div > p {
+      font: 600 2vmax "Montserrat";
+      margin: 0.5vmax 0;
+    }
+  
+    .profileContainer > div:last-child > div:last-child > a {
+      font: 600 2vmax "Montserrat";
+      padding: 1vmax;
+      margin: 2vmax 0;
+    }
+}
