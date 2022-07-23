@@ -15,6 +15,7 @@ import { loadLoggedInUser } from './actions/userAction';
 import UserMenu from './components/layout/Header/UserMenu';
 import Profile from './components/User/Profile';
 import { useSelector } from 'react-redux';
+import ProtectedRoute from './components/Route/ProtectedRoute';
 
 function App() {
 
@@ -44,7 +45,7 @@ useEffect(() => {
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/search" element={<Search />} />
-        <Route exact path="/account" element={<Profile />} />
+        <ProtectedRoute exact path="/account" element={<Profile />} />
         <Route exact path="/login" element={<LoginRegister />} />
       </Routes>
       <Footer />
