@@ -16,6 +16,7 @@ import UserMenu from './components/layout/Header/UserMenu';
 import Profile from './components/User/Profile';
 import { useSelector } from 'react-redux';
 import ProtectedRoute from './components/Route/ProtectedRoute';
+import UpdateProfile from './components/User/UpdateProfile';
 
 function App() {
 
@@ -37,7 +38,7 @@ useEffect(() => {
     <Router>
       <Header />
       { isAuthenticated && <UserMenu user={user} /> }
-      {/* IN REACT-ROUTER-DOM V6, WE HAVE TO WRAP ALL OUR ROUTE WITHIN ROUTES COMPONENT */}
+      {/* IN REACT-ROUTER-DOM V6, WE HAVE TO WRAP ALL OUR ROUTES WITHIN ROUTES COMPONENT */}
       <Routes>
       {/* NOW WE HAVE TO USE element={<Component />} instead of earlier component={Component} */}
         <Route exact path="/" element={<Home />} />
@@ -45,11 +46,16 @@ useEffect(() => {
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/search" element={<Search />} />
-        <ProtectedRoute exact path="/account" element={<Profile />} />
+        <Route path="/account" element={<ProtectedRoute />}>
+          <Route exact path="/account" element={<Profile />} />
+        </Route>
         <Route exact path="/login" element={<LoginRegister />} />
+        <Route path="/me/update" element={<ProtectedRoute />}>
+          <Route exact path="/me/update" element={<UpdateProfile />} />
+        </Route>
       </Routes>
       <Footer />
-    </Router>
+    </Router>   
 
   );
 }
