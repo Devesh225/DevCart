@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOAD_LOGGED_IN_USER_REQUEST, LOAD_LOGGED_IN_USER_SUCCESS, LOAD_LOGGED_IN_USER_FAILURE, LOGOUT_SUCCESS, LOGOUT_FAILURE, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE} from '../constants/userConstants';
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOAD_LOGGED_IN_USER_REQUEST, LOAD_LOGGED_IN_USER_SUCCESS, LOAD_LOGGED_IN_USER_FAILURE, LOGOUT_SUCCESS, LOGOUT_FAILURE, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE, UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAILURE} from '../constants/userConstants';
 
 export const login = (email, password) => async(dispatch) => {
     try {
@@ -132,6 +132,38 @@ export const updateProfile = (userFormData) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: UPDATE_PROFILE_FAILURE,
+            payload: error.response.data.message
+        });
+    }
+};
+
+export const updatePassword = (passwordData) => async(dispatch) => {
+    try {
+        dispatch({
+            type: UPDATE_PASSWORD_REQUEST
+        });
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const data = await axios.put(
+            `/api/password/update`,
+            passwordData,
+            config
+        );
+
+        dispatch({
+            type: UPDATE_PASSWORD_SUCCESS,
+            payload: data 
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: UPDATE_PASSWORD_FAILURE,
             payload: error.response.data.message
         });
     }
