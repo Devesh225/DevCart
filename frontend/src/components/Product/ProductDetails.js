@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import ReactStars from 'react-rating-stars-component';
 import Carousel from 'react-material-ui-carousel';
@@ -18,9 +18,22 @@ const ProductDetails = () => {
     const { id } = useParams();
 
     const { product, loading, error } = useSelector(state => state.product);
+
+    const [quantity, setQuantity] = useState(1);
+
+    const increaseQuantity = () => {
+        if(product.stock <= quantity) 
+            return;
+        setQuantity(quantity + 1);
+    }
+
+    const decreaseQuantity = () => {
+        if(quantity <= 1) 
+            return;
+        setQuantity(quantity - 1);
+    }
      
     useEffect(() => {
-
         if(error) {
             alert.error(error);
             dispatch(clearErrors());
@@ -66,9 +79,9 @@ const ProductDetails = () => {
                                 <h1>{`₹${product.price}`}</h1>
                                 <div className="detailsBlock_3_1">
                                     <div className="detailsBlock_3_1_1">
-                                        <button>-</button>
-                                        <input readOnly type="number" />
-                                        <button>+</button>
+                                        <button onClick={decreaseQuantity}>-</button>
+                                        <input readOnly type="number" value={quantity}/>
+                                        <button onClick={increaseQuantity}>+</button>
                                     </div>
                                     <button
                                         disabled={product.stock < 1 ? true : false}
