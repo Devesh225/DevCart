@@ -9,6 +9,7 @@ import Loading from '../layout/Loading/Loading';
 import Review from './Review';
 import { useAlert } from "react-alert"
 import MetaData from '../layout/MetaData';
+import { addItemsToCart } from '../../actions/cartAction';
 
 
 const ProductDetails = () => {
@@ -31,6 +32,11 @@ const ProductDetails = () => {
         if(quantity <= 1) 
             return;
         setQuantity(quantity - 1);
+    }
+
+    const addItemsToCartHandler = () => {
+        dispatch(addItemsToCart(id, quantity));
+        alert.success("Item Added To Cart");
     }
      
     useEffect(() => {
@@ -85,6 +91,7 @@ const ProductDetails = () => {
                                     </div>
                                     <button
                                         disabled={product.stock < 1 ? true : false}
+                                        onClick={addItemsToCartHandler}
                                     >
                                         Add to Cart
                                     </button>
