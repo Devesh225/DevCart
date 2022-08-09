@@ -8,13 +8,16 @@ import './LoginRegister.css';
 import { clearErrors, login, register } from '../../actions/userAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const LoginRegister = () => {
   const alert = useAlert();
+  const location = useLocation();
   const dispatch = useDispatch();
   const {loading, error, isAuthenticated} = useSelector(state => state.user);
   const navigate = useNavigate();
+
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
     if(error) {
@@ -23,9 +26,9 @@ const LoginRegister = () => {
     }
 
     if(isAuthenticated) {
-      navigate("/account");
+      navigate(`/${redirect}`);
     }
-  }, [dispatch, error, alert, navigate, isAuthenticated]);
+  }, [dispatch, error, alert, navigate, isAuthenticated, redirect]);
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);
