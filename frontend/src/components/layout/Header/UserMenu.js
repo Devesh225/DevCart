@@ -7,10 +7,12 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import { useAlert } from 'react-alert';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../../actions/userAction';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './UserMenu.css';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const UserMenu = ({ user }) => {
+    const { cartItems } = useSelector(state => state.cart);
     const [open, setOpen] = useState(false);
     const alert = useAlert();
     const navigate = useNavigate();
@@ -19,6 +21,7 @@ const UserMenu = ({ user }) => {
     const options = [
         { icon: <ListAltIcon />, name: "Orders", func: orders },
         { icon: <PersonIcon />, name: "Profile", func: account },
+        { icon: <ShoppingCartIcon style={{color: cartItems.length > 0 ? "tomato": "unset"}}/>, name: `Cart(${cartItems.length})`, func: cart },
         { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
     ];
     
@@ -41,6 +44,10 @@ const UserMenu = ({ user }) => {
     function account() {
         navigate("/account");
     }
+
+    function cart() {
+      navigate("/cart");
+  }
 
     function logoutUser() {
         dispatch(logout());
