@@ -17,7 +17,7 @@ const LoginRegister = () => {
   const {loading, error, isAuthenticated} = useSelector(state => state.user);
   const navigate = useNavigate();
 
-  const redirect = location.search ? location.search.split("=")[1] : "/account";
+  const redirect = location.search ? location.search.split("=")[1] : "account";
 
   useEffect(() => {
     if(error) {
