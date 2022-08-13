@@ -61,7 +61,7 @@ const ConfirmOrder = () => {
             </div>
           </div>
           <div className="confirmCartItems">
-            <Typography>Your Cart Items: {subtotal > 500 ? <p style={{color: "tomato"}}>Eligible For Free Delivery</p> : <p>Delivery Charges Applicable</p>}</Typography>
+            <Typography>Your Cart Items: {subtotal > 500 ? <span style={{color: "tomato"}}>Eligible For Free Delivery</span> : <span>Delivery Charges Applicable</span>}</Typography>
             <div className="confirmCartItemsContainer">
               {cartItems &&
                 cartItems.map((item) => (

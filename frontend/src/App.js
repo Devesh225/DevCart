@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Header from './components/layout/Header/Header.js';
 import Home from './components/Home/Home.js';
@@ -23,22 +23,36 @@ import ResetPassword from './components/User/ResetPassword';
 import Cart from './components/Cart/Cart';
 import Shipping from './components/Cart/Shipping'
 import ConfirmOrder from './components/Cart/ConfirmOrder'
+import axios from "axios";
+import Payment from './components/Cart/Payment';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import OrderSuccess from './components/Cart/OrderSuccess'
+import ViewMyOrders from './components/Order/ViewMyOrders'
+import OrderDetails from './components/Order/OrderDetails'
 
 function App() {
 
-const { isAuthenticated, user } = useSelector(state => state.user);
-// TO LOAD THE FONT at componentDidMount
-useEffect(() => {
-  WebFont.load({
-    google: {
-      families: ["Montserrat", "Roboto", "Droid Sans"]
-    }
-  });
+  const { isAuthenticated, user } = useSelector(state => state.user);
+  const [stripeApiKey, setStripeApiKey] = useState('');
 
-  store.dispatch(loadLoggedInUser());
+  async function getStripeApiKey() {
+    const { data } = await axios.get("/api/stripeapikey");
+    setStripeApiKey(data.stripeApiKey);
+  }
 
-}, []);
+  // TO LOAD THE FONT at componentDidMount
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Montserrat"]
+      }
+    });
 
+    store.dispatch(loadLoggedInUser());
+    getStripeApiKey();
+    
+  }, []);
 
   return (
     <Router>
@@ -68,9 +82,23 @@ useEffect(() => {
         <Route path="/shipping" element={<ProtectedRoute />}>
           <Route exact path="/shipping" element={<Shipping />} />
         </Route>
+        <Route path="/success" element={<ProtectedRoute />}>
+          <Route exact path="/success" element={<OrderSuccess />} />
+        </Route>
+        <Route path="/orders" element={<ProtectedRoute />}>
+          <Route exact path="/orders" element={<ViewMyOrders />} />
+        </Route>
         <Route path="/order/confirm" element={<ProtectedRoute />}>
           <Route exact path="/order/confirm" element={<ConfirmOrder />} />
         </Route>
+        <Route path="/order/:id" element={<ProtectedRoute />}>
+          <Route exact path="/order/:id" element={<OrderDetails />} />
+        </Route>
+        <Route path="/process/payment" element={<ProtectedRoute />}>
+        { stripeApiKey && <Route path="process/payment" element={<Elements stripe={loadStripe(stripeApiKey)} />}>
+            <Route exact path="process/payment" element={<Payment />} />
+          </Route> }
+        </Route> 
       </Routes>
       <Footer />
     </Router>   

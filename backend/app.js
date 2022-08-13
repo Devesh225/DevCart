@@ -6,7 +6,7 @@ const checkError = require('./middlewares/error');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
-
+const paymentRoutes = require('./routes/paymentRoute');
 
 const app = express();
 
@@ -17,6 +17,7 @@ app.use(fileUpload());
 app.use("/api", productRoutes);
 app.use("/api", userRoutes);
 app.use("/api", orderRoutes)
+app.use("/api", paymentRoutes);
 
 // ERROR MIDDLEWARE
 app.use(checkError);
