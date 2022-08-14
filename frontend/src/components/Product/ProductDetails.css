@@ -142,6 +142,27 @@
     transform: scale(1.1);
 }
 
+.submitDialog {
+    display: flex;
+    flex-direction: column;
+}
+
+.submitDialogTitle {
+    text-align: center;
+}
+
+.submitDialogRating {
+    align-self: center;
+}
+
+.submitDialogTextArea {
+    border: 1px solid rgba(0, 0, 0, 0.082);
+    margin: 1vmax 0;
+    outline: none;
+    padding: 1rem;
+    font: 500 1rem "Montserrat";
+}
+
 .reviewsHeading {
     text-align: center;
     font-family: "Montserrat";
@@ -182,7 +203,7 @@
         justify-content: center;
     }
 
-    .detailsBlock_2 > span {
+    .detailsBlock_2_span {
         font-size: 1.5vmax;
     }
   
@@ -245,6 +266,6 @@
     }
 
     .reviewCardComment {
-        font: 300 5vw "Montserrat";
+        font: 300 4vw "Montserrat";
     }
 }
