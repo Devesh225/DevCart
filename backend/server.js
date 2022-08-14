@@ -3,6 +3,8 @@ const connectDatabase = require('./config/database');
 const dotenv = require('dotenv');
 const cloudinary = require('cloudinary');
 
+dotenv.config({path:"backend/config/config.env"});
+
 // HANDLING UNCAUGHT EXCEPTION
 process.on('uncaughtException', (err) => {
     console.log(`Error: ${err.message}\nShutting Down The Server Due To Uncaught Exception.`);
@@ -11,8 +13,6 @@ process.on('uncaughtException', (err) => {
     });
 });
 
-
-dotenv.config({path:"backend/config/config.env"});
 
 connectDatabase();
 
