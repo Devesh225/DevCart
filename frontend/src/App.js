@@ -24,9 +24,7 @@ import Cart from './components/Cart/Cart';
 import Shipping from './components/Cart/Shipping'
 import ConfirmOrder from './components/Cart/ConfirmOrder'
 import axios from "axios";
-import Payment from './components/Cart/Payment';
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import { StripeCheckout } from './components/Cart/Payment';
 import OrderSuccess from './components/Cart/OrderSuccess'
 import ViewMyOrders from './components/Order/ViewMyOrders'
 import OrderDetails from './components/Order/OrderDetails'
@@ -48,7 +46,6 @@ function App() {
         families: ["Montserrat"]
       }
     });
-
     store.dispatch(loadLoggedInUser());
     getStripeApiKey();
     
@@ -95,9 +92,7 @@ function App() {
           <Route exact path="/order/:id" element={<OrderDetails />} />
         </Route>
         <Route path="/process/payment" element={<ProtectedRoute />}>
-        { stripeApiKey && <Route path="process/payment" element={<Elements stripe={loadStripe(stripeApiKey)} />}>
-            <Route exact path="process/payment" element={<Payment />} />
-          </Route> }
+            <Route exact path="/process/payment" element={<StripeCheckout stripeApiKey={stripeApiKey}/>} />
         </Route> 
       </Routes>
       <Footer />
