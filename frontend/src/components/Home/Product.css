@@ -1,6 +1,6 @@
 .productCard {
     display: flex;
-    width: 16vmax;
+    width: 17vmax;
     flex-direction: column;
     text-decoration: none;
     font-family: "Montserrat";
@@ -25,28 +25,29 @@
 .productCard > div {
     display: flex;
     align-items: center;
-    font-size: 1.1vmax;
+    font-size: 1vmax;
     font-weight: bold;
     margin-left: 0.5vmax;
 }
 
-.productCard > div > span {
+.review_span {
     margin: auto 0.75vmax;
-    color: #222831
+    color: #222831;
+    font-size: 1vmax;
 }
 
 .productCard > span {
     margin: 0.75vmax;
     margin-left: 0.5vmax;
     font-size: 1.25vmax;
-    color: #00ADB5;
+    color: tomato;
     font-weight: bold;
 }
 
 .productCard > span::before {
     content: "₹";
     margin-right: 0.25vmax;
-    color: #00ADB5;
+    color: tomato;
     font-weight: bold;
 }
 
