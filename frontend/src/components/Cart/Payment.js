@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import MetaData from "../layout/MetaData";
 import { Typography } from "@material-ui/core";
 import { useAlert } from "react-alert";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import {
     CardNumberElement,
     CardCvcElement,
@@ -19,7 +21,15 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { useNavigate } from 'react-router-dom';
 import { createNewOrder, clearErrors } from '../../actions/orderAction'
 
-const Payment = () => {
+export const StripeCheckout = ({ stripeApiKey }) => {
+  return (
+    <Elements stripe={loadStripe(stripeApiKey)} >
+      <Payment />
+    </Elements>
+  )
+}
+
+export const Payment = () => {
 
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -35,7 +45,6 @@ const Payment = () => {
   const payBtn = useRef(null);
 
   useEffect(() => {
-    console.log("Inside Payment Component")
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
@@ -88,6 +97,7 @@ const Payment = () => {
                 postal_code: shippingInfo.pinCode,
                 country: shippingInfo.country,
               },
+              phone: shippingInfo.phoneNo
             },
           },
         });
@@ -111,7 +121,8 @@ const Payment = () => {
         }
       } catch (error) {
         payBtn.current.disabled = false;
-        alert.error(error.response.data.message);
+        console.log(error);
+        // alert.error(error.response.data.message);
     }
 
   }
@@ -146,5 +157,3 @@ const Payment = () => {
     </Fragment>
   )
 }
-
-export default Payment
