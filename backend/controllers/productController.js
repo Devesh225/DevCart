@@ -171,3 +171,11 @@ exports.deleteReview = catchAsyncError(async(req, res, next) => {
         message: 'Review Deleted Successfully'
     });
 });
+
+exports.getAllProductsAdmin = catchAsyncError(async(req, res) => {
+    const products = await productModel.find();
+    res.status(200).json({
+        success: true,
+        products,
+    });
+});
