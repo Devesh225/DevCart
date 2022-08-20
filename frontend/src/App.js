@@ -28,6 +28,8 @@ import { StripeCheckout } from './components/Cart/Payment';
 import OrderSuccess from './components/Cart/OrderSuccess'
 import ViewMyOrders from './components/Order/ViewMyOrders'
 import OrderDetails from './components/Order/OrderDetails'
+import Dashboard from './components/Admin/Dashboard'
+import AllProductsList from './components/Admin/AllProductsList'
 
 function App() {
 
@@ -94,6 +96,12 @@ function App() {
         <Route path="/process/payment" element={<ProtectedRoute />}>
             <Route exact path="/process/payment" element={<StripeCheckout stripeApiKey={stripeApiKey}/>} />
         </Route> 
+        <Route isAdmin={true} path="/admin/dashboard" element={<ProtectedRoute />}>
+          <Route exact path="/admin/dashboard" element={<Dashboard />} />
+        </Route>
+        <Route isAdmin={true} path="/admin/products" element={<ProtectedRoute />}>
+          <Route exact path="/admin/products" element={<AllProductsList />} />
+        </Route>
       </Routes>
       <Footer />
     </Router>   
