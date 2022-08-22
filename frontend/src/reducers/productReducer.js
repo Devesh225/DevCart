@@ -1,6 +1,6 @@
 // We need to pass a state and an action, state is an empty list of products.
 // Importing Constants 
-import { ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_PRODUCT_FAILURE, CLEAR_ERRORS, PRODUCT_REQUEST, PRODUCT_SUCCESS, PRODUCT_FAILURE, NEW_REVIEW_REQUEST, NEW_REVIEW_SUCCESS, NEW_REVIEW_FAILURE, NEW_REVIEW_RESET, ADMIN_ALL_PRODUCT_REQUEST, ADMIN_ALL_PRODUCT_FAILURE, ADMIN_ALL_PRODUCT_SUCCESS } from '../constants/productConstants';
+import { ALL_PRODUCT_REQUEST, ALL_PRODUCT_SUCCESS, ALL_PRODUCT_FAILURE, CLEAR_ERRORS, PRODUCT_REQUEST, PRODUCT_SUCCESS, PRODUCT_FAILURE, NEW_REVIEW_REQUEST, NEW_REVIEW_SUCCESS, NEW_REVIEW_FAILURE, NEW_REVIEW_RESET, ADMIN_ALL_PRODUCT_REQUEST, ADMIN_ALL_PRODUCT_FAILURE, ADMIN_ALL_PRODUCT_SUCCESS, ADMIN_NEW_PRODUCT_REQUEST, ADMIN_NEW_PRODUCT_SUCCESS, ADMIN_NEW_PRODUCT_RESET, ADMIN_NEW_PRODUCT_FAILURE } from '../constants/productConstants';
 
 
 export const allProductsReducer = (state = {products: []}, action) => {
@@ -97,6 +97,44 @@ export const newReviewReducer = (state = {}, action) => {
             }
         
         case NEW_REVIEW_FAILURE:
+            return {
+                loading: false,
+                error: action.payload
+            }
+
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
+    
+        default:
+            return state;
+    }
+}
+
+export const newProductAdminReducer = (state = {product: {}}, action) => {
+    switch (action.type) {
+        case ADMIN_NEW_PRODUCT_REQUEST:
+            return {
+                loading: true,
+                ...state
+            }
+
+        case ADMIN_NEW_PRODUCT_SUCCESS:
+            return {
+                loading: false,
+                success: action.payload.success,
+                product: action.payload.product
+            }
+
+        case ADMIN_NEW_PRODUCT_RESET:
+            return {
+                ...state,
+                success: false,
+            }
+        
+        case ADMIN_NEW_PRODUCT_FAILURE:
             return {
                 loading: false,
                 error: action.payload
