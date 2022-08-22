@@ -30,6 +30,7 @@ import ViewMyOrders from './components/Order/ViewMyOrders'
 import OrderDetails from './components/Order/OrderDetails'
 import Dashboard from './components/Admin/Dashboard'
 import AllProductsList from './components/Admin/AllProductsList'
+import NewProduct from './components/Admin/NewProduct'
 
 function App() {
 
@@ -101,6 +102,9 @@ function App() {
         </Route>
         <Route isAdmin={true} path="/admin/products" element={<ProtectedRoute />}>
           <Route exact path="/admin/products" element={<AllProductsList />} />
+        </Route>
+        <Route isAdmin={true} path="/admin/product/new" element={<ProtectedRoute />}>
+          <Route exact path="/admin/product/new" element={<NewProduct />} />
         </Route>
       </Routes>
       <Footer />
