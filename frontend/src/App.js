@@ -31,6 +31,10 @@ import OrderDetails from './components/Order/OrderDetails'
 import Dashboard from './components/Admin/Dashboard'
 import AllProductsList from './components/Admin/AllProductsList'
 import NewProduct from './components/Admin/NewProduct'
+import UpdateProduct from './components/Admin/UpdateProduct'
+import Orders from './components/Admin/Orders'
+import UpdateOrderStatus from './components/Admin/UpdateOrderStatus';
+import Users from './components/Admin/Users'
 
 function App() {
 
@@ -105,6 +109,18 @@ function App() {
         </Route>
         <Route isAdmin={true} path="/admin/product/new" element={<ProtectedRoute />}>
           <Route exact path="/admin/product/new" element={<NewProduct />} />
+        </Route>
+        <Route isAdmin={true} path="/admin/product/:id" element={<ProtectedRoute />}>
+          <Route exact path="/admin/product/:id" element={<UpdateProduct />} />
+        </Route>
+        <Route isAdmin={true} path="/admin/orders" element={<ProtectedRoute />}>
+          <Route exact path="/admin/orders" element={<Orders />} />
+        </Route>
+        <Route isAdmin={true} path="/admin/order/:id" element={<ProtectedRoute />}>
+          <Route exact path="/admin/order/:id" element={<UpdateOrderStatus />} />
+        </Route>
+        <Route isAdmin={true} path="/admin/users" element={<ProtectedRoute />}>
+          <Route exact path="/admin/users" element={<Users />} />
         </Route>
       </Routes>
       <Footer />
