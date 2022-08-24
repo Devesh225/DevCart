@@ -85,9 +85,11 @@ exports.updateOrderStatus = catchAsyncError(async(req, res, next) => {
     }
 
     // WE NEED TO SUBTRACT THE QUANTITY FROM THE STOCK WHEN THE ITEM GETS DELIVERED.
-    order.orderItems.forEach(async(order) => {
-        await updateStock(order.product, order.quantity);
-    });
+    if(req.body.status === "Shipped") {
+        order.orderItems.forEach(async(order) => {
+            await updateStock(order.product, order.quantity);
+        });
+    }
 
     order.orderStatus = req.body.status;
     
@@ -102,7 +104,6 @@ exports.updateOrderStatus = catchAsyncError(async(req, res, next) => {
     res.status(200).json({
         success: true,
         order,
-        totalAmount
     });
 });
 
