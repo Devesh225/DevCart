@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOAD_LOGGED_IN_USER_REQUEST, LOAD_LOGGED_IN_USER_SUCCESS, LOAD_LOGGED_IN_USER_FAILURE, LOGOUT_SUCCESS, LOGOUT_FAILURE, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE, UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAILURE, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAILURE, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILURE} from '../constants/userConstants';
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, CLEAR_ERRORS, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILURE, LOAD_LOGGED_IN_USER_REQUEST, LOAD_LOGGED_IN_USER_SUCCESS, LOAD_LOGGED_IN_USER_FAILURE, LOGOUT_SUCCESS, LOGOUT_FAILURE, UPDATE_PROFILE_REQUEST, UPDATE_PROFILE_SUCCESS, UPDATE_PROFILE_FAILURE, UPDATE_PASSWORD_REQUEST, UPDATE_PASSWORD_SUCCESS, UPDATE_PASSWORD_FAILURE, FORGOT_PASSWORD_REQUEST, FORGOT_PASSWORD_SUCCESS, FORGOT_PASSWORD_FAILURE, RESET_PASSWORD_REQUEST, RESET_PASSWORD_SUCCESS, RESET_PASSWORD_FAILURE, ADMIN_ALL_USER_REQUEST, ADMIN_ALL_USER_SUCCESS, ADMIN_ALL_USER_FAILURE, ADMIN_USER_REQUEST, ADMIN_USER_SUCCESS, ADMIN_USER_FAILURE, ADMIN_UPDATE_USER_REQUEST, ADMIN_UPDATE_USER_SUCCESS, ADMIN_UPDATE_USER_FAILURE, ADMIN_DELETE_USER_REQUEST, ADMIN_DELETE_USER_SUCCESS, ADMIN_DELETE_USER_FAILURE} from '../constants/userConstants';
 
 export const login = (email, password) => async(dispatch) => {
     try {
@@ -228,6 +228,100 @@ export const resetPassword = (token, passwordData) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: RESET_PASSWORD_FAILURE,
+            payload: error.response.data.message
+        });
+    }
+};
+
+export const adminViewAllUsers = () => async(dispatch) => {
+    try {
+        dispatch({
+            type: ADMIN_ALL_USER_REQUEST
+        });
+
+        const { data } = await axios.get(`/api/admin/users`,);
+
+        dispatch({
+            type: ADMIN_ALL_USER_SUCCESS,
+            payload: data.users
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: ADMIN_ALL_USER_FAILURE,
+            payload: error.response.data.message
+        });
+    }
+};
+
+export const adminGetUserDetails= (id) => async(dispatch) => {
+    try {
+        dispatch({
+            type: ADMIN_USER_REQUEST
+        });
+
+        const { data } = await axios.get(`/api/admin/user/${id}`);
+
+        dispatch({
+            type: ADMIN_USER_SUCCESS,
+            payload: data.user
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: ADMIN_USER_FAILURE,
+            payload: error.response.data.message
+        });
+    }
+};
+
+export const updateUser = (id, userData) => async(dispatch) => {
+    try {
+        dispatch({
+            type: ADMIN_UPDATE_USER_REQUEST
+        });
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.get(`/api/admin/user/${id}`, userData, config);
+
+        dispatch({
+            type: ADMIN_UPDATE_USER_SUCCESS,
+            payload: data 
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: ADMIN_UPDATE_USER_FAILURE,
+            payload: error.response.data.message
+        });
+    }
+};
+
+export const deleteUser = (id) => async(dispatch) => {
+    try {
+        dispatch({
+            type: ADMIN_DELETE_USER_REQUEST
+        });
+
+        const { data } = await axios.delete(`/api/admin/user/${id}`);
+
+        dispatch({
+            type: ADMIN_DELETE_USER_SUCCESS,
+            payload: data
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: ADMIN_DELETE_USER_FAILURE,
             payload: error.response.data.message
         });
     }
