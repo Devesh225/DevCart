@@ -1,0 +1,60 @@
+.sidebar {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0;
+}
+
+  
+.sidebar > a:first-child {
+    padding: 0;
+    text-align: center;
+}
+
+.sidebar > a > img {
+    width: 50%;
+    transition: all 0.5s;
+    margin-top: 2rem;
+}
+  
+.sidebar > a > img:hover {
+    filter: drop-shadow(0 0 10px tomato);
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.75);
+    font: 700 1rem "Montserrat";
+    padding: 2rem;
+    transition: all 0.5s;
+}
+
+.sidebar a:hover {
+    color: tomato;
+    transform: scale(1.1);
+}
+  
+.sidebar a > p {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a > p > svg {
+    margin-right: 0.5rem;
+}
+  
+.MuiTypography-root {
+    background-color: #fff !important;
+}
+
+.MuiTreeItem-iconContainer {
+    padding-left: 2rem;
+}
+
+.MuiTreeItem-label {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.75) !important;
+    font: 700 1rem "Montserrat" !important;
+    padding: 2rem 0 !important;
+    transition: all 0.5s !important;
+}
