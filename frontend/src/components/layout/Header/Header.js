@@ -1,54 +1,93 @@
-import React from 'react';
-import { ReactNavbar } from 'overlay-navbar';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import './Header.css'
 import { AiOutlineUser, AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai';
-import logo from "../../../images/logo.png";
-import './Header.css';
-
-const options = {
-    burgerColor: "lightgray",
-    burgerColorHover: "#222831",
-    logo,
-    logoWidth: "10vmax",
-    navColor1: "white",
-    logoHoverColor: "#DA0037",
-    link1Text: "Home",
-    link2Text: "Products",
-    link3Text: "Contact",
-    link4Text: "About",
-    link1Url: "/",
-    link2Url: "/products",
-    link3Url: "/contact",
-    link4Url: "/about",
-    link1Size: "1.3vmax",
-    link1Color: "rgba(35, 35, 35,0.8)",
-    nav1justifyContent: "flex-end",
-    nav2justifyContent: "flex-end",
-    nav3justifyContent: "flex-start",
-    nav4justifyContent: "flex-start",
-    link1ColorHover: "#DA0037",
-    link1Margin: "1vmax",
-    profileIconUrl: "/login",
-    profileIconColor: "rgba(35, 35, 35,0.8)",
-    profileIcon: true,
-    ProfileIconElement: AiOutlineUser,
-    cartIcon: true,
-    cartIconUrl: "/cart",
-    CartIconElement: AiOutlineShoppingCart,
-    searchIcon: true,
-    SearchIconElement: AiOutlineSearch,
-    searchIconColor: "rgba(35, 35, 35,0.8)",
-    searchIconUrl: "/search",
-    cartIconColor: "rgba(35, 35, 35,0.8)",
-    profileIconColorHover: "#DA0037",
-    searchIconColorHover: "#DA0037",
-    cartIconColorHover: "#DA0037",
-    cartIconMargin: "1vmax",
-};
+import { NavLink } from 'react-router-dom';
+import { createMuiTheme, ThemeProvider } from '@mui/material';
 
 const Header = () => {
+
+  const customTheme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#fff"
+      }
+    }
+  });
+
   return (
-    <ReactNavbar {...options} />
-  )
+    <Box sx={{ flexGrow: 1 }}>
+    <ThemeProvider theme={customTheme}>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <NavLink to='/'><Typography
+            variant="h5"
+            noWrap
+            component="div"
+            color={"#000"}
+            paddingRight={"15px"}
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            DEVCART
+          </Typography></NavLink>
+          <NavLink to='/'><Typography
+            variant="h6"
+            fontSize={"1rem"}
+            color={"#000"}
+            noWrap
+            paddingLeft={"15px"}
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            Home
+          </Typography></NavLink>
+          <NavLink to='/products'><Typography
+            variant="h6"
+            noWrap
+            component="div"
+            fontSize={"1rem"}
+            color={"#000"}
+            paddingLeft={"15px"}
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            Products
+          </Typography></NavLink>
+          <NavLink to='/contact'><Typography
+            variant="h6"
+            noWrap
+            fontSize={"1rem"}
+            paddingLeft={"15px"}
+            color={"#000"}
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            Contact
+          </Typography></NavLink>
+          <NavLink to='/about'><Typography
+            variant="h6"
+            color={"#000"}
+            noWrap
+            fontSize={"1rem"}
+            paddingLeft={"15px"}
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+          >
+            About
+          </Typography></NavLink>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <NavLink to="/search"><AiOutlineSearch fontSize="24px" color="inherit" /></NavLink>
+            <NavLink to="/cart"><AiOutlineShoppingCart fontSize="24px" color="inherit"/></NavLink>
+            <NavLink to="/login"><AiOutlineUser fontSize="24px" color="inherit" /></NavLink>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      </ThemeProvider>
+    </Box>
+  );
 }
 
-export default Header
+export default Header;
