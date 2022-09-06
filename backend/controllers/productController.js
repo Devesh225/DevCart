@@ -205,7 +205,7 @@ exports.deleteReview = catchAsyncError(async(req, res, next) => {
         sumRating += review.rating
     });
 
-    const rating = sumRating/reviews.length;
+    const rating = reviews.length > 0 ? sumRating/reviews.length : 0;
     const numberOfReviews = reviews.length;
 
     await productModel.findByIdAndUpdate(req.query.productId, {
