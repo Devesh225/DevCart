@@ -1,0 +1,11 @@
+.MuiTypography-root {
+    background-color: #000 !important;
+}
+
+.MuiTypography-h6 {
+    font-size: 1rem !important;
+}
+
+svg {
+    padding-right: 15px;
+}
