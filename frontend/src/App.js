@@ -35,6 +35,11 @@ import UpdateProduct from './components/Admin/UpdateProduct'
 import Orders from './components/Admin/Orders'
 import UpdateOrderStatus from './components/Admin/UpdateOrderStatus';
 import Users from './components/Admin/Users'
+import UpdateUser from './components/Admin/UpdateUser'
+import ProductReviews from './components/Admin/ProductReviews'
+import Contact from './components/layout/Contact/Contact';
+import About from './components/layout/About/About';
+import PageNotFound from './components/layout/PageNotFound/PageNotFound';
 
 function App() {
 
@@ -58,6 +63,10 @@ function App() {
     
   }, []);
 
+  // window.addEventListener("contextmenu", (e) => {
+  //   e.preventDefault();
+  // })
+
   return (
     <Router>
       <Header />
@@ -66,6 +75,8 @@ function App() {
       <Routes>
       {/* NOW WE HAVE TO USE element={<Component />} instead of earlier component={Component} */}
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/about" element={<About />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
@@ -122,6 +133,13 @@ function App() {
         <Route isAdmin={true} path="/admin/users" element={<ProtectedRoute />}>
           <Route exact path="/admin/users" element={<Users />} />
         </Route>
+        <Route isAdmin={true} path="/admin/user/:id" element={<ProtectedRoute />}>
+          <Route exact path="/admin/user/:id" element={<UpdateUser />} />
+        </Route>
+        <Route isAdmin={true} path="/admin/reviews" element={<ProtectedRoute />}>
+          <Route exact path="/admin/reviews" element={<ProductReviews />} />
+        </Route>
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </Router>   
