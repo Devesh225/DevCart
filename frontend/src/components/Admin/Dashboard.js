@@ -19,6 +19,7 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
+import { adminViewAllUsers } from '../../actions/userAction'
 
 const Dashboard = () => {
     ChartJS.register(
@@ -34,6 +35,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
     const { products } = useSelector((state) => state.allProducts);
     const { orders } = useSelector((state) => state.allOrders);
+    const { users } = useSelector((state) => state.allUsers);
     
     let outOfStock = 0;
 
@@ -46,6 +48,7 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(getAllProductsAdmin());
         dispatch(adminViewAllOrders());
+        dispatch(adminViewAllUsers());
     }, [dispatch]);
 
     let totalAmount = 0;
@@ -98,7 +101,7 @@ const Dashboard = () => {
                     </Link>
                     <Link to="/admin/users">
                         <p>Users</p>
-                        {/* <p>{users && users.length}</p> */}
+                        <p>{users && users.length}</p>
                     </Link>
                 </div>
             </div>
