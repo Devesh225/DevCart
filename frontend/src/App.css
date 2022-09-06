@@ -1,9 +1,12 @@
 * {
     margin: 0;
     scroll-behavior: smooth;
+    outline: none;
+    text-decoration: none;
 }
 
 body {
+    /* cursor: url("./images/cursor.png"), auto; */
     background-color: #fff;
 }
 
