@@ -289,7 +289,7 @@ export const updateUser = (id, userData) => async(dispatch) => {
             }
         }
 
-        const { data } = await axios.get(`/api/admin/user/${id}`, userData, config);
+        const { data } = await axios.put(`/api/admin/user/${id}`, userData, config);
 
         dispatch({
             type: ADMIN_UPDATE_USER_SUCCESS,
