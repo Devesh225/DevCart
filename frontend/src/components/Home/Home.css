@@ -42,7 +42,7 @@
 .banner::after {
     content: "";
     width: 100vw;
-    height: 100vmin;
+    height: 110vmin;
     background-color: #EEEEEE;
     position: absolute;
     top: 0%;
