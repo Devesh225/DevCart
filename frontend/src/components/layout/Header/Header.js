@@ -79,9 +79,9 @@ const Header = () => {
           </Typography></NavLink>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <NavLink to="/search"><AiOutlineSearch fontSize="24px" color="inherit" /></NavLink>
-            <NavLink to="/cart"><AiOutlineShoppingCart fontSize="24px" color="inherit"/></NavLink>
-            <NavLink to="/login"><AiOutlineUser fontSize="24px" color="inherit" /></NavLink>
+            <NavLink to="/search"><AiOutlineSearch fontSize="24px" color="#000" /></NavLink>
+            <NavLink to="/cart"><AiOutlineShoppingCart fontSize="24px" color="#000"/></NavLink>
+            <NavLink to="/login"><AiOutlineUser fontSize="24px" color="#000" /></NavLink>
           </Box>
         </Toolbar>
       </AppBar>
