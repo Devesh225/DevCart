@@ -17,9 +17,9 @@ const Product = ({ product }) => {
         <img src={product.images[0].url} alt={product.name} />
         <p>{product.name}</p>
         <div>
-            <Rating {...options} /> <span className="review_span">({product.numberOfReviews} Reviews)</span>
+            <Rating {...options} />
         </div>
-        <span>{product.price}</span>
+        <span>{product.price} <span className="review_span">({product.numberOfReviews} Reviews)</span> </span>
     </Link>
   )
 }
