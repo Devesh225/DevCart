@@ -38,6 +38,10 @@ const Dashboard = () => {
     const { users } = useSelector((state) => state.allUsers);
     
     let outOfStock = 0;
+    let inStock = 0;
+    if(products) {
+        inStock = products.length;
+    }
 
     products && products.forEach((item) => {
         if (item.stock === 0) {
@@ -69,13 +73,13 @@ const Dashboard = () => {
         ],
     };
 
-        const doughnutState = {
+    const doughnutState = {
         labels: ["Out of Stock", "In Stock"],
         datasets: [
             {
             backgroundColor: ["#00A6B4", "#6800B4"],
             hoverBackgroundColor: ["#4B5000", "#35014F"],
-            data: [outOfStock, products.length - outOfStock],
+            data: [outOfStock, inStock],
             },
         ],
     };
