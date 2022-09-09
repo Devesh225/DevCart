@@ -20,10 +20,11 @@ import EventIcon from "@mui/icons-material/Event";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { useNavigate } from 'react-router-dom';
 import { createNewOrder, clearErrors } from '../../actions/orderAction'
+import { removeItemsFromCart } from "../../actions/cartAction";
 
 export const StripeCheckout = ({ stripeApiKey }) => {
   return (
-    <Elements stripe={loadStripe(stripeApiKey)} >
+    stripeApiKey && <Elements stripe={loadStripe(stripeApiKey)} >
       <Payment />
     </Elements>
   )
@@ -113,7 +114,9 @@ export const Payment = () => {
             };
   
             dispatch(createNewOrder(order));
-  
+            cartItems.forEach((cartItem) => {
+              dispatch(removeItemsFromCart(cartItem.product));
+            });
             navigate("/success");
           } else {
             alert.error("There is some issue while processing your payment");
