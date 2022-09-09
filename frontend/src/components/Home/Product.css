@@ -4,9 +4,16 @@
     flex-direction: column;
     text-decoration: none;
     font-family: "Montserrat";
+    height: 25vmax;
     margin: 3vmax;
     transition: all 0.5s;
     padding-bottom: 0.5vmax;
+    justify-content: space-between;
+    text-align: center;
+}
+
+span {
+    align-items: center;
 }
 
 .productCard > img {
@@ -56,4 +63,6 @@
     transform: translateY(-0.5vmax);
 }
 
-
+svg {
+    padding-right: 0;
+}
