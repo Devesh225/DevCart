@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const productRoutes = require('./routes/productRoute');
 const userRoutes = require('./routes/userRoute');
 const orderRoutes = require('./routes/orderRoute');
@@ -18,6 +19,12 @@ app.use("/api", productRoutes);
 app.use("/api", userRoutes);
 app.use("/api", orderRoutes)
 app.use("/api", paymentRoutes);
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
+})
 
 // ERROR MIDDLEWARE
 app.use(checkError);
