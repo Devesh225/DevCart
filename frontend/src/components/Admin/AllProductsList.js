@@ -18,7 +18,7 @@ const AllProductsList = () => {
 
   const { error, products } = useSelector((state) => state.allProducts);
 
-  const { error: deleteError, isDeleted } = useSelector((state) => state.product);
+  const { error: deleteError, isDeleted } = useSelector((state) => state.products);
 
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));

@@ -55,16 +55,19 @@ const NewProduct = () => {
 
   const createProductSubmitHandler = (e) => {
     e.preventDefault();
-    const myForm = new FormData();
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("category", category);
-    myForm.set("stock", stock);
+    const myForm = {
+      "name": name,
+      "price": price,
+      "description": description,
+      "category": category,
+      "stock": stock,
+      "images": []
+    }
 
-    images.forEach((image) => {
-      myForm.append("images", image);
+    images && images.forEach((image) => {
+      myForm.images.push(image);
     });
+    console.log(myForm, "About To Dispatch")
     dispatch(createNewProduct(myForm));
   };
 
@@ -74,7 +77,7 @@ const NewProduct = () => {
     setImages([]);
     setImagesPreview([]);
 
-    files.forEach((file) => {
+    files && files.forEach((file) => {
       const reader = new FileReader();
 
       reader.onload = () => {

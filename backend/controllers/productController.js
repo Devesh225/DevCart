@@ -28,7 +28,6 @@ exports.getAllProducts = catchAsyncError(async(req, res) => {
 
 // CREATE A PRODUCT
 exports.createProduct = catchAsyncError(async(req, res) => {
-
     let images = [];
     if(typeof req.body.images === "string") { // ONLY ONE IMAGE
         images.push(req.body.images);
@@ -36,10 +35,10 @@ exports.createProduct = catchAsyncError(async(req, res) => {
         images = req.body.images;
     }
 
-    const imagesLink = [];
+    let imagesLink = [];
 
     let length = images.length ? images.length : 0;
-
+    
     for(let i = 0; i < length; i++) {
         const result = await cloudinary.v2.uploader.upload(images[i], { folder: "products" });
         imagesLink.push({
