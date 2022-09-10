@@ -60,7 +60,6 @@ function App() {
     });
     store.dispatch(loadLoggedInUser());
     getStripeApiKey();
-    
   }, []);
 
   window.addEventListener("contextmenu", (e) => {

@@ -20,10 +20,11 @@ const LoginRegister = () => {
   const redirect = location.search ? location.search.split("=")[1] : "account";
 
   useEffect(() => {
-    if(error) {
+
+    if(error && error !== "Please Login to Access") {
       alert.error(error);
       dispatch(clearErrors());
-    }
+    } 
 
     if(isAuthenticated) {
       navigate(`/${redirect}`);
