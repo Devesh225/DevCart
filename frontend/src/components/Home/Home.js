@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from 'react'
 import MetaData from '../layout/MetaData';
-import Product from './Product';
 import { CgMouse } from  'react-icons/cg';
 import { clearErrors, getAllProducts } from '../../actions/productAction';
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from '../layout/Loading/Loading';
 import { useAlert } from 'react-alert';
 import './Home.css'
+import Product from './Product';
 
 const Home = () => {
 
